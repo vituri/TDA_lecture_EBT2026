@@ -1,0 +1,13 @@
+source = https://raw.githubusercontent.com/vituri/mapperGUI/master/examples/flam-reference.csv
+sample = 2400 / 26907 points (farthest_points_sample_ids, seed 20260802)
+cover = Uniform(length=14, expansion=0.4)
+refiner = DBscan(radius=0.06, min_cluster_size=5); Euclidean metric for filters 1-3, graph-geodesic metric for filter 4
+geodesic eccentricity = mean all-pairs shortest-path distance on a 3-NN graph (4321 edges), Euclidean edge weights
+cross-foot edges = 0
+mixed-foot nodes in geodesic Mapper = 0
+closest opposing-foot points = Euclidean 0.036, geodesic 1.564, ratio 43.1x
+torus-x: nodes=10 edges=10 components=1 cycle_rank=1
+height: nodes=19 edges=19 components=1 cycle_rank=1
+beak: nodes=21 edges=21 components=1 cycle_rank=1
+eccentricity: nodes=38 edges=39 components=1 cycle_rank=2
+geodesic: nodes=39 edges=38 components=1 cycle_rank=0

@@ -1,0 +1,4 @@
+method=farthest_points_sample_ids
+n=2400
+seed=20260802
+source=https://raw.githubusercontent.com/vituri/mapperGUI/master/examples/flam-reference.csv

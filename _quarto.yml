@@ -1,0 +1,36 @@
+project:
+  type: default
+  output-dir: presentation
+  render:
+    - slides.qmd
+
+format:
+  revealjs:
+    css: axios-font.css
+    theme:
+      - default
+      - theme.scss
+    width: 1600
+    height: 900
+    margin: 0.055
+    center: false
+    controls: true
+    controls-layout: edges
+    controls-tutorial: false
+    progress: true
+    slide-number: c/t
+    navigation-mode: linear
+    transition: fade
+    background-transition: fade
+    hash: true
+    history: true
+    preview-links: auto
+    embed-resources: true
+    pdf-separate-fragments: false
+    auto-stretch: false
+    html-math-method: mathml
+    include-after-body: includes/after-body.html
+
+resources:
+  - figures/**
+  - interactions.js

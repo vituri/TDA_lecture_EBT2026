@@ -1,0 +1,33 @@
+# Operating-system and editor files
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Quarto cache and rendered presentation
+/.quarto/
+/presentation/
+
+# Reproducible presentation and abstract outputs
+*.pdf
+
+# TeX/Typst intermediate files
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+
+# Julia-generated local state and coverage output
+/.julia/
+*.jl.cov
+*.jl.mem

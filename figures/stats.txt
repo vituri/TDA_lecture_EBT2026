@@ -1,0 +1,382 @@
+source     = FBref-derived proxy snapshot
+season     = 2020-2021
+players    = 1513
+features   = 18  ["z_assists_per90", "z_blocks_per90", "z_carries_per90", "z_clearances_per90", "z_goals_per90", "z_interceptions_per90", "z_key_passes_per90", "z_overall", "z_pass_completion_pct", "z_passes_into_box_per90", "z_progressive_carries_per90", "z_progressive_passes_per90", "z_shots_on_target_per90", "z_shots_per90", "z_tackles_per90", "z_touches_per90", "z_xa_per90", "z_xg_per90"]
+brazilians = 72  (4.8% base rate)
+PCA        = PC1 45.5% of variance, PC2 23.3%
+
+══ MAIN  R1Cover(PC1) Uniform(14, 0.4) + DBscan(2.5, min 8) ══
+  nodes=22 edges=26 components=3 cycle_rank=7
+  tips(deg 1)=5 branch(deg>=3)=13 isolated=2
+  node sizes: min=1 median=24.0 max=452
+  mean node purity=0.67  vs largest-group baseline=0.463
+  nodes with a tied dominant position=3
+
+  ── MAIN: tips (degree <= 1) ──
+7×10 DataFrame
+ Row │ node   size   degree  position    goals_z  play_z   def_z    brazil   exemplar            top_brazilian
+     │ Int64  Int64  Int64   String      Float64  Float64  Float64  Float64  String31            AbstractStri…
+─────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────
+   1 │     1      1       0  Forward        5.16     2.01    -0.47     0.0   Luis Muriel
+   2 │     2      2       0  Midfielder     4.94     1.81    -0.91     0.0   Robert Lewandowski
+   3 │     6      9       1  Forward        2.74    -0.04    -1.26     0.0   Karim Benzema
+   4 │     3      6       1  Midfielder     2.66     3.0     -0.57     0.17  Kylian Mbappé       Neymar
+   5 │    20      4       1  Defender      -0.45    -0.49     0.55     0.0   Daniele Rugani
+   6 │    21    123       1  Defender      -0.86    -0.71     1.02     0.09  Ardian Ismajli      Thiago Silva
+   7 │    22      1       1  Defender      -1.21    -1.99     0.54     0.0   Kenny Tete
+
+  ── MAIN: all nodes by goals_z ──
+22×10 DataFrame
+ Row │ node   size   degree  position    goals_z  play_z   def_z    brazil   exemplar            top_brazilian
+     │ Int64  Int64  Int64   String      Float64  Float64  Float64  Float64  String31            AbstractStri…
+─────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   1 │     1      1       0  Forward        5.16     2.01    -0.47     0.0   Luis Muriel
+   2 │     2      2       0  Midfielder     4.94     1.81    -0.91     0.0   Robert Lewandowski
+   3 │     6      9       1  Forward        2.74    -0.04    -1.26     0.0   Karim Benzema
+   4 │     3      6       1  Midfielder     2.66     3.0     -0.57     0.17  Kylian Mbappé       Neymar
+   5 │     4     19       2  Forward        2.61     1.25    -0.69     0.0   Gareth Bale
+   6 │     5     26       3  Midfielder     2.08     1.15    -0.57     0.0   Dries Mertens
+   7 │     7     57       3  Forward        1.68     0.13    -1.07     0.05  Sasa Kalajdzic      Raphael Dias Belloli
+   8 │     8     22       3  Midfielder     1.59     0.96    -0.82     0.05  Jesse Lingard       Rodrygo
+   9 │     9    143       4  Forward        1.35    -0.16    -1.08     0.03  Edinson Cavani      Gabriel Jesus
+  10 │    10     39       3  Midfielder     0.98     1.51    -0.46     0.05  Jesse Lingard       Rodrygo
+  11 │    12    226       3  Midfielder     0.82    -0.13    -0.92     0.04  Mattia Destro       Lucas Moura
+  12 │    11     33       4  Midfielder     0.5      1.04    -0.23     0.0   Borja Mayoral
+  13 │    16      9       3  Midfielder     0.34     0.71    -0.38     0.22  Sergi Roberto       Rafinha
+  14 │    14    248       4  Midfielder     0.25     0.09    -0.53     0.03  Charles Abi         Lucas Moura
+  15 │    13     16       3  Defender       0.15     1.13     0.13     0.06  Leon Goretzka       Rafinha
+  16 │    17     17       3  Midfielder    -0.16    -0.02     0.25     0.06  Manuel Sánchez      Bruno Guimarães
+  17 │    15    292       3  Defender      -0.32     0.32     0.18     0.03  Tommaso Pobega      Casemiro
+  18 │    20      4       1  Defender      -0.45    -0.49     0.55     0.0   Daniele Rugani
+  19 │    18    415       2  Defender      -0.61     0.08     0.39     0.04  Diego Demme         Fernando
+  20 │    19    452       4  Defender      -0.75    -0.5      0.68     0.07  Guillermo Maripán   Fernando
+  21 │    21    123       1  Defender      -0.86    -0.71     1.02     0.09  Ardian Ismajli      Thiago Silva
+  22 │    22      1       1  Defender      -1.21    -1.99     0.54     0.0   Kenny Tete
+
+══ COARSE  Uniform(12, 0.25) + FirstEmptyBin(10) ══
+  nodes=12 edges=9 components=3 cycle_rank=0
+  tips(deg 1)=2 branch(deg>=3)=0 isolated=2
+  node sizes: min=1 median=111.5 max=498
+  mean node purity=0.711  vs largest-group baseline=0.463
+  nodes with a tied dominant position=0
+
+══ FINE  Uniform(18, 0.5) + DBscan(2.0, min 3) ══
+  nodes=45 edges=63 components=5 cycle_rank=23
+  tips(deg 1)=12 branch(deg>=3)=21 isolated=2
+  node sizes: min=1 median=6.0 max=344
+  mean node purity=0.74  vs largest-group baseline=0.463
+  nodes with a tied dominant position=2
+
+
+╔══ FILTER COMPARISON — same cover Uniform(20, 0.6), same DBscan(2.0, min 3) ══╗
+
+══ filter = pc1 ══
+  nodes=49 edges=68 components=6 cycle_rank=25
+  tips(deg 1)=12 branch(deg>=3)=23 isolated=2
+  node sizes: min=1 median=6.0 max=337
+  mean node purity=0.738  vs largest-group baseline=0.463
+  nodes with a tied dominant position=4
+
+══ filter = ecc ══
+  nodes=52 edges=58 components=7 cycle_rank=13
+  tips(deg 1)=26 branch(deg>=3)=12 isolated=2
+  node sizes: min=1 median=4.5 max=606
+  mean node purity=0.776  vs largest-group baseline=0.463
+  nodes with a tied dominant position=1
+
+══ filter = dens ══
+  nodes=24 edges=12 components=12 cycle_rank=0
+  tips(deg 1)=8 branch(deg>=3)=0 isolated=8
+  node sizes: min=1 median=3.5 max=1113
+  mean node purity=0.927  vs largest-group baseline=0.463
+  nodes with a tied dominant position=0
+
+══ filter = attack ══
+  nodes=49 edges=76 components=3 cycle_rank=30
+  tips(deg 1)=8 branch(deg>=3)=22 isolated=2
+  node sizes: min=1 median=8.0 max=545
+  mean node purity=0.738  vs largest-group baseline=0.463
+  nodes with a tied dominant position=4
+
+
+╔══ CLUSTERING COMPARISON — same PC1 filter + Uniform(20, 0.6) cover ══╗
+
+══ refiner = firstempty ══
+  nodes=20 edges=16 components=4 cycle_rank=0
+  tips(deg 1)=3 branch(deg>=3)=1 isolated=3
+  node sizes: min=1 median=72.0 max=361
+  mean node purity=0.689  vs largest-group baseline=0.463
+  nodes with a tied dominant position=2
+
+══ refiner = dbscan ══
+  nodes=49 edges=68 components=6 cycle_rank=25
+  tips(deg 1)=12 branch(deg>=3)=23 isolated=2
+  node sizes: min=1 median=6.0 max=337
+  mean node purity=0.738  vs largest-group baseline=0.463
+  nodes with a tied dominant position=4
+
+══ refiner = kmeans ══
+  nodes=35 edges=37 components=5 cycle_rank=7
+  tips(deg 1)=5 branch(deg>=3)=13 isolated=3
+  node sizes: min=1 median=57.0 max=197
+  mean node purity=0.783  vs largest-group baseline=0.463
+  nodes with a tied dominant position=0
+
+
+╔══ ECCENTRICITY FLARES  Uniform(20, 0.5) + DBscan(2.0, min 3) ══╗
+
+══ ecc ══
+  nodes=51 edges=55 components=7 cycle_rank=11
+  tips(deg 1)=27 branch(deg>=3)=12 isolated=2
+  node sizes: min=1 median=4.0 max=581
+  mean node purity=0.768  vs largest-group baseline=0.463
+  nodes with a tied dominant position=1
+
+  ── ECC: tips (degree <= 1) ──
+29×10 DataFrame
+ Row │ node   size   degree  position    goals_z  play_z   def_z    brazil   exemplar             top_brazilian
+     │ Int64  Int64  Int64   String      Float64  Float64  Float64  Float64  String31             AbstractStri…
+─────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   1 │    51      1       0  Forward        5.16     2.01    -0.47     0.0   Luis Muriel
+   2 │    48      1       1  Forward        5.01    -0.43    -1.28     0.0   Robert Lewandowski
+   3 │    50      1       1  Midfielder     4.87     4.05    -0.53     0.0   Lionel Messi
+   4 │    47      2       1  Midfielder     2.75     4.29    -0.52     0.5   Josip Iličić         Neymar
+   5 │    39      3       1  Forward        2.46    -1.13    -1.79     0.0   Luis Suárez
+   6 │    45      1       0  Midfielder     2.37     4.07     0.56     0.0   Kevin De Bruyne
+   7 │    36      3       1  Forward        2.36    -1.28    -1.56     0.0   Alexander Isak
+   8 │    44      5       1  Midfielder     2.35     1.58    -0.72     0.0   Aleksandr Golovin
+   9 │    46      1       1  Midfielder     2.17     4.33    -0.53     0.0   Josip Iličić
+  10 │    16      5       1  Midfielder     1.53    -0.64    -0.68     0.2   Florian Sotoca       Richarlison
+  11 │    14      3       1  Forward        1.48    -0.33    -1.53     0.33  Gabriel Jesus        Gabriel Jesus
+  12 │    26      3       1  Forward        1.48    -0.33    -1.53     0.33  Gabriel Jesus        Gabriel Jesus
+  13 │    24      4       1  Midfielder     1.46     0.16    -0.97     0.0   Antoine Griezmann
+  14 │    13      3       1  Forward        1.36     0.78    -0.61     0.33  Matteo Politano      Matheus Pereira
+  15 │    25      3       1  Forward        0.97    -0.13    -1.17     0.0   Ihlas Bebou
+  16 │    15      3       1  Midfielder     0.77     0.95    -0.73     0.0   Leandro Trossard
+  17 │    17      3       1  Midfielder     0.57     0.99    -0.59     0.0   Marco Asensio
+  18 │     5      3       1  Midfielder     0.44     0.51    -0.68     0.0   Gonzalo Melero
+  19 │     8      7       1  Midfielder     0.26     1.36     0.4      0.0   Florian Neuhaus
+  20 │     1      1       1  Midfielder     0.24     0.46     0.17     1.0   Hernani              Hernani
+  21 │    19      3       1  Midfielder     0.06     0.4     -0.85     0.0   Jon Morcillo
+  22 │     9      5       1  Midfielder    -0.11     1.13    -0.01     0.0   Gastón Ramírez
+  23 │    33      3       1  Midfielder    -0.12     2.83     0.33     0.0   Manuel Locatelli
+  24 │    10      3       1  Midfielder    -0.33     0.85    -0.75     0.0   Ashley Young
+  25 │     2    123       1  Midfielder    -0.38     0.01    -0.08     0.02  Roberto Gagliardini  Casemiro
+  26 │    27     10       1  Defender      -0.71     0.01     0.01     0.2   Kurt Zouma           Thiago Silva
+  27 │    21      4       1  Defender      -0.72     0.71     1.51     0.5   Fred                 Fred
+  28 │    20      3       1  Midfielder    -0.86    -0.86     0.26     0.67  Otávio               Otávio
+  29 │    29      6       1  Defender      -0.89    -1.39     1.12     0.0   Germán Sánchez
+
+  ── ECC: all nodes by goals_z ──
+51×10 DataFrame
+ Row │ node   size   degree  position    goals_z  play_z   def_z    brazil   exemplar              top_brazilian
+     │ Int64  Int64  Int64   String      Float64  Float64  Float64  Float64  String31              AbstractStri…
+─────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   1 │    51      1       0  Forward        5.16     2.01    -0.47     0.0   Luis Muriel
+   2 │    48      1       1  Forward        5.01    -0.43    -1.28     0.0   Robert Lewandowski
+   3 │    49      2       2  Midfielder     4.94     1.81    -0.91     0.0   Robert Lewandowski
+   4 │    50      1       1  Midfielder     4.87     4.05    -0.53     0.0   Lionel Messi
+   5 │    47      2       1  Midfielder     2.75     4.29    -0.52     0.5   Josip Iličić          Neymar
+   6 │    39      3       1  Forward        2.46    -1.13    -1.79     0.0   Luis Suárez
+   7 │    43     10       2  Forward        2.41     1.21    -0.32     0.0   Gareth Bale
+   8 │    45      1       0  Midfielder     2.37     4.07     0.56     0.0   Kevin De Bruyne
+   9 │    36      3       1  Forward        2.36    -1.28    -1.56     0.0   Alexander Isak
+  10 │    44      5       1  Midfielder     2.35     1.58    -0.72     0.0   Aleksandr Golovin
+  11 │    46      1       1  Midfielder     2.17     4.33    -0.53     0.0   Josip Iličić
+  12 │    42      8       2  Forward        2.16     1.32    -0.41     0.0   Gareth Bale
+  13 │    34      5       2  Forward        2.15    -0.64    -1.34     0.0   Sasa Kalajdzic
+  14 │    38     23       3  Midfielder     2.01     0.52    -0.93     0.0   Karim Benzema
+  15 │    37      3       2  Forward        1.98    -1.27    -1.72     0.0   Jean-Philippe Mateta
+  16 │    40     17       2  Midfielder     1.95     1.62    -0.84     0.0   Dries Mertens
+  17 │    30     17       4  Forward        1.92    -1.09    -1.61     0.0   Sasa Kalajdzic
+  18 │    41     10       2  Forward        1.86     1.61    -0.61     0.0   Alexis Sánchez
+  19 │    16      5       1  Midfielder     1.53    -0.64    -0.68     0.2   Florian Sotoca        Richarlison
+  20 │    14      3       1  Forward        1.48    -0.33    -1.53     0.33  Gabriel Jesus         Gabriel Jesus
+  21 │    26      3       1  Forward        1.48    -0.33    -1.53     0.33  Gabriel Jesus         Gabriel Jesus
+  22 │    24      4       1  Midfielder     1.46     0.16    -0.97     0.0   Antoine Griezmann
+  23 │    23     50       4  Forward        1.43    -1.02    -1.48     0.02  Kevin Volland         Maranhão
+  24 │    35     49       4  Midfielder     1.38     0.77    -0.63     0.06  Álvaro Morata         Rodrygo
+  25 │    13      3       1  Forward        1.36     0.78    -0.61     0.33  Matteo Politano       Matheus Pereira
+  26 │    32      3       2  Midfielder     1.35     1.18    -0.21     0.0   Henrikh Mkhitaryan
+  27 │    12     81       5  Forward        1.04    -0.88    -1.38     0.04  Ihlas Bebou           Kenedy
+  28 │    31     78       4  Midfielder     0.98     0.6     -0.5      0.06  Edinson Cavani        Rodrygo
+  29 │    25      3       1  Forward        0.97    -0.13    -1.17     0.0   Ihlas Bebou
+  30 │    15      3       1  Midfielder     0.77     0.95    -0.73     0.0   Leandro Trossard
+  31 │    17      3       1  Midfielder     0.57     0.99    -0.59     0.0   Marco Asensio
+  32 │    22    112       5  Midfielder     0.46     0.46    -0.23     0.04  Phil Foden            Roberto Firmino
+  33 │     5      3       1  Midfielder     0.44     0.51    -0.68     0.0   Gonzalo Melero
+  34 │     8      7       1  Midfielder     0.26     1.36     0.4      0.0   Florian Neuhaus
+  35 │     1      1       1  Midfielder     0.24     0.46     0.17     1.0   Hernani               Hernani
+  36 │     6    119       6  Midfielder     0.17     0.24    -0.19     0.05  Goran Pandev          Kenedy
+  37 │     4     24       2  Midfielder     0.16     0.23    -0.26     0.08  Matteo Darmian        Fernando
+  38 │    11    163       7  Midfielder     0.1      0.44     0.01     0.04  Marcos Llorente       Matheus Cunha
+  39 │    19      3       1  Midfielder     0.06     0.4     -0.85     0.0   Jon Morcillo
+  40 │     9      5       1  Midfielder    -0.11     1.13    -0.01     0.0   Gastón Ramírez
+  41 │    33      3       1  Midfielder    -0.12     2.83     0.33     0.0   Manuel Locatelli
+  42 │    28      3       2  Midfielder    -0.22     2.54     0.55     0.0   Ander Herrera
+  43 │    10      3       1  Midfielder    -0.33     0.85    -0.75     0.0   Ashley Young
+  44 │     2    123       1  Midfielder    -0.38     0.01    -0.08     0.02  Roberto Gagliardini   Casemiro
+  45 │     3    581       5  Defender      -0.43    -0.08     0.13     0.04  Ruben Vargas          Lucas Moura
+  46 │     7    564      11  Defender      -0.43    -0.23     0.36     0.07  Gianluca Caprari      Lucas Moura
+  47 │    27     10       1  Defender      -0.71     0.01     0.01     0.2   Kurt Zouma            Thiago Silva
+  48 │    21      4       1  Defender      -0.72     0.71     1.51     0.5   Fred                  Fred
+  49 │    18    161       5  Defender      -0.74    -0.46     0.78     0.04  Nicolò Barella        Marquinhos
+  50 │    20      3       1  Midfielder    -0.86    -0.86     0.26     0.67  Otávio                Otávio
+  51 │    29      6       1  Defender      -0.89    -1.39     1.12     0.0   Germán Sánchez
+
+
+╔══ TWO LENSES  R2Cover(PC1, PC2) 12x12 exp 0.4 + DBscan(2.5, min 3) ══╗
+
+══ pc1 x pc2 ══
+  nodes=146 edges=390 components=8 cycle_rank=252
+  tips(deg 1)=13 branch(deg>=3)=121 isolated=5
+  node sizes: min=1 median=5.0 max=223
+  mean node purity=0.819  vs largest-group baseline=0.463
+  nodes with a tied dominant position=10
+
+
+╔══ OVERLAP  R1Cover(PC1) 14 slices, DBscan(2.5, min 3) ══╗
+  radius = (step/2)(1+e); slices i and i+2 are 2 steps apart,
+  so non-adjacent slices first intersect at e > 1.
+
+══ expansion = 0.4 ══
+  nodes=26 edges=29 components=4 cycle_rank=7
+  tips(deg 1)=8 branch(deg>=3)=13 isolated=3
+  node sizes: min=1 median=17.5 max=452
+  mean node purity=0.696  vs largest-group baseline=0.463
+  nodes with a tied dominant position=3
+
+══ expansion = 1.0 ══
+  nodes=28 edges=37 components=1 cycle_rank=10
+  tips(deg 1)=5 branch(deg>=3)=12 isolated=0
+  node sizes: min=1 median=18.5 max=566
+  mean node purity=0.685  vs largest-group baseline=0.463
+  nodes with a tied dominant position=1
+
+══ expansion = 1.4 ══
+  nodes=32 edges=74 components=1 cycle_rank=43
+  tips(deg 1)=1 branch(deg>=3)=21 isolated=0
+  node sizes: min=1 median=15.5 max=687
+  mean node purity=0.694  vs largest-group baseline=0.463
+  nodes with a tied dominant position=1
+
+
+╔══ NERVE  same cover + clusters, different edge rule ══╗
+
+══ nerve = simple ══
+  nodes=146 edges=390 components=8 cycle_rank=252
+  tips(deg 1)=13 branch(deg>=3)=121 isolated=5
+  node sizes: min=1 median=5.0 max=223
+  mean node purity=0.819  vs largest-group baseline=0.463
+  nodes with a tied dominant position=10
+
+══ nerve = min2 ══
+  nodes=146 edges=210 components=48 cycle_rank=112
+  tips(deg 1)=31 branch(deg>=3)=65 isolated=41
+  node sizes: min=1 median=5.0 max=223
+  mean node purity=0.819  vs largest-group baseline=0.463
+  nodes with a tied dominant position=10
+
+══ nerve = percentage ══
+  nodes=146 edges=303 components=8 cycle_rank=165
+  tips(deg 1)=13 branch(deg>=3)=121 isolated=5
+  node sizes: min=1 median=5.0 max=223
+  mean node purity=0.819  vs largest-group baseline=0.463
+  nodes with a tied dominant position=10
+
+══ nerve = jaccard ══
+  nodes=146 edges=213 components=18 cycle_rank=85
+  tips(deg 1)=24 branch(deg>=3)=93 isolated=10
+  node sizes: min=1 median=5.0 max=223
+  mean node purity=0.819  vs largest-group baseline=0.463
+  nodes with a tied dominant position=10
+
+
+╔══ BALL MAPPER  100 farthest-point landmarks ══╗
+  pairwise distance quantiles: see figures/explore.txt
+
+══ epsilon = 3.0 ══
+  nodes=100 edges=186 components=39 cycle_rank=125
+  tips(deg 1)=13 branch(deg>=3)=44 isolated=36
+  node sizes: min=1 median=4.0 max=266
+  mean node purity=0.837  vs largest-group baseline=0.463
+  nodes with a tied dominant position=9
+
+══ epsilon = 3.6 ══
+  nodes=100 edges=760 components=13 cycle_rank=673
+  tips(deg 1)=3 branch(deg>=3)=80 isolated=11
+  node sizes: min=1 median=20.0 max=434
+  mean node purity=0.789  vs largest-group baseline=0.463
+  nodes with a tied dominant position=2
+
+
+╔══ Brazilians in the main graph ══╗
+  top 12 Brazilians by overall:
+12×7 DataFrame
+ Row │ player                team             position_group  overall  goal_scoring_proxy  playmaking_proxy  defensive_proxy
+     │ String31              String31         String15        Float64  Float64             Float64           Float64
+─────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   1 │ Rodrygo               Real Madrid      Forward            0.64            0.9               1.4231           1.2844
+   2 │ Gabriel Jesus         Manchester City  Forward            0.57            1.04333           0.724105         0.775109
+   3 │ Neymar                Paris S-G        Midfielder         0.57            1.80667           3.17271          1.27389
+   4 │ Raphael Dias Belloli  Leeds United     Midfielder         0.57            1.01667           2.08044          1.6126
+   5 │ Lucas Paquetá         Lyon             Midfielder         0.55            0.996667          2.37535          1.917
+   6 │ Roberto Firmino       Liverpool        Forward            0.51            1.10667           1.53357          1.25397
+   7 │ Lucas Moura           Tottenham        Midfielder         0.45            0.493333          1.10318          1.56051
+   8 │ Matheus Pereira       West Brom        Midfielder         0.45            0.92              1.42867          1.20629
+   9 │ Kenedy                Granada          Midfielder         0.43            0.856667          0.698497         1.04294
+  10 │ João Pedro            Cagliari         Midfielder         0.42            0.93              0.846974         0.879501
+  11 │ Maranhão              Valladolid       Forward            0.38            0.99              0.395095         0.839695
+  12 │ Matheus Cunha         Hertha BSC       Midfielder         0.38            1.13              1.37115          1.24477
+  most-Brazilian nodes:
+10×7 DataFrame
+ Row │ node   size   degree  share    n_brazil  position    top_brazilian
+     │ Int64  Int64  Int64   Float64  Int64     String      AbstractStri…
+─────┼───────────────────────────────────────────────────────────────────────────
+   1 │    16      9       3    0.222         2  Midfielder  Rafinha
+   2 │     3      6       1    0.167         1  Midfielder  Neymar
+   3 │    21    123       1    0.089        11  Defender    Thiago Silva
+   4 │    19    452       4    0.069        31  Defender    Fernando
+   5 │    13     16       3    0.062         1  Defender    Rafinha
+   6 │    17     17       3    0.059         1  Midfielder  Bruno Guimarães
+   7 │     7     57       3    0.053         3  Forward     Raphael Dias Belloli
+   8 │    10     39       3    0.051         2  Midfielder  Rodrygo
+   9 │     8     22       3    0.045         1  Midfielder  Rodrygo
+  10 │    12    226       3    0.044        10  Midfielder  Lucas Moura
+
+╔══ where the named players landed ══╗
+
+  MAIN:
+    node 1 (size 1, degree 0): Muriel
+    node 2 (size 2, degree 0): Lewandowski + Messi
+    node 3 (size 6, degree 1): Mbappé + Neymar + De Bruyne
+    node 4 (size 19, degree 2): Ronaldo
+    node 6 (size 9, degree 1): Benzema
+    node 11 (size 33, degree 4): Alexander-Arnold
+    node 15 (size 292, degree 3): Casemiro
+    node 21 (size 123, degree 1): Thiago Silva
+
+  ECC:
+    node 7 (size 564, degree 11): Kanté
+    node 22 (size 112, degree 5): Marcelo
+    node 27 (size 10, degree 1): Thiago Silva
+    node 38 (size 23, degree 3): Alexander-Arnold
+    node 40 (size 17, degree 2): Benzema
+    node 44 (size 5, degree 1): Mbappé + Haaland
+    node 45 (size 1, degree 0): De Bruyne
+    node 47 (size 2, degree 1): Neymar
+    node 48 (size 1, degree 1): Lewandowski
+    node 50 (size 1, degree 1): Messi
+
+  2LENS:
+    node 2 (size 1, degree 1): Messi
+    node 4 (size 2, degree 3): Neymar
+    node 6 (size 1, degree 0): Lewandowski
+    node 8 (size 4, degree 6): De Bruyne
+    node 13 (size 3, degree 3): Mbappé
+    node 16 (size 1, degree 3): Haaland
+    node 68 (size 3, degree 2): Alexander-Arnold
+    node 94 (size 97, degree 10): Casemiro
+    node 126 (size 33, degree 7): Kanté
+    node 139 (size 17, degree 5): Thiago Silva
+

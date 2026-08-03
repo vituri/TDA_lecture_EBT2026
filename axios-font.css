@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&display=swap");
+
+:root {
+  --r-main-font: "Source Sans 3", system-ui, sans-serif;
+  --r-heading-font: "Source Sans 3", system-ui, sans-serif;
+}
+
+.reveal,
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6,
+.reveal button,
+.reveal input {
+  font-family: "Source Sans 3", system-ui, sans-serif;
+}

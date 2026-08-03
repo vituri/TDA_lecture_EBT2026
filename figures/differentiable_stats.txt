@@ -1,0 +1,24 @@
+ROTATED TABLE — isometric R3 -> R10 embedding
+hero seed = 20260802
+learned |cos(theta, hidden normal)| = 0.9998830480726647
+PCA metrics = (score = 4.599999999995402, ordinary_persistence = 0.0, nodes = 12, edges = 11, components = 1, cycle_rank = 0, tips = 2, branches = 0)
+learned metrics = (score = 32.27918322583952, ordinary_persistence = 4.399518979164371, nodes = 44, edges = 43, components = 1, cycle_rank = 0, tips = 4, branches = 2)
+best checkpoint epoch = 171 / 350
+rotation benchmark alignments = [0.9998990949811097, 0.9999547559614657, 0.9998100073411783, 0.999982113373426, 0.9999929553942111, 0.9999494810766585, 0.9999217622726237, 0.999983384004701]
+rotation successes (alignment > 0.95) = 8 / 8
+
+FOOTBALL — labels withheld during optimization
+features = 18
+PCA metrics = (score = 8.13085203883141, ordinary_persistence = 1.1526508966540372, nodes = 49, edges = 68, components = 6, cycle_rank = 25, tips = 12, branches = 23, purity = (mean = 0.7381788301407544, weighted = 0.6498135101533361), position_eta2 = 0.45434437172414627)
+learned metrics = (score = 12.965578821262184, ordinary_persistence = 2.61335172744641, nodes = 55, edges = 73, components = 6, cycle_rank = 24, tips = 19, branches = 21, purity = (mean = 0.7700488413892354, weighted = 0.6458419528340918), position_eta2 = 0.38001805933634647)
+best checkpoint epoch = 204 / 300
+score improvement = 0.5946150242731063
+top learned weights:
+  z_overall = -0.40012666606818725
+  z_xa_per90 = -0.3558359314708777
+  z_assists_per90 = -0.3529382913955118
+  z_key_passes_per90 = -0.2929882424717628
+  z_shots_on_target_per90 = -0.28521235423237545
+  z_passes_into_box_per90 = -0.2767671536588321
+  z_progressive_carries_per90 = -0.2758752959484102
+  z_goals_per90 = -0.24440532068955992

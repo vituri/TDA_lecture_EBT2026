@@ -1,0 +1,70 @@
+\documentclass[10pt,a4paper]{amsart}
+% Este arquivo sera processado automaticamente por um programa.
+% Por favor não altere o preâmbulo (antes de \begin{document} ).
+
+% This file will be compiled by a computer program.
+% Please do not change the preamble (before \begin{document} ).
+
+\usepackage{amsmath,amssymb}
+\usepackage{enumerate}
+\usepackage{epsfig,geometry,graphicx,graphics,enumitem,amsthm,indentfirst}
+\usepackage[english]{babel}
+
+% Por favor nao inclua outros "packages".
+% Please do not include any other package.
+
+\begin{document}
+
+
+\title{The Mapper algorithm: a discrete analogue of the Reeb graph}
+\author{Guilherme Vituri}
+
+
+\maketitle
+
+The Reeb graph of a continuous function defined on a topological space is a
+classical object that records how the connected components of its level sets
+evolve, yielding a compact one-dimensional summary of the space~\cite{reeb1946}.
+When the space is known only through a finite sample, this construction cannot
+be applied directly. The Mapper algorithm, introduced by Singh, M\'emoli and
+Carlsson~\cite{singh2007}, overcomes this limitation: given a point cloud, a
+filter function, and a cover of its image, Mapper clusters the preimage of each
+cover element and assembles the resulting clusters into the nerve of the refined
+cover, producing a graph. This graph is a discrete analogue of the Reeb graph,
+and under suitable hypotheses it is provably close to it~\cite{carriere2018}. In
+this talk we present the Mapper algorithm from this topological perspective,
+discuss its main variants and the stability results that justify it, and
+illustrate the constructions computationally with the \texttt{TDAmapper.jl}
+package, closing with an application to exploratory data
+analysis~\cite{lum2013}.
+\\
+
+	\begin{thebibliography}{99}
+
+		\bibitem{reeb1946} Reeb, G. Sur les points singuliers d'une forme de
+		Pfaff compl\`etement int\'egrable ou d'une fonction num\'erique.
+		\emph{Comptes Rendus Acad. Sciences Paris}
+		\textbf{222} (\textbf{1946}), 847--849.
+
+		\bibitem{singh2007} Singh, G., M\'emoli, F., Carlsson, G. Topological
+		Methods for the Analysis of High Dimensional Data Sets and 3D Object
+		Recognition. In \emph{PBG@ Eurographics} \textbf{2007}, pp. 91--100.
+
+		\bibitem{lum2013} Lum, P. Y., Singh, G., Lehman, A., Ishkanov, T.,
+		Vejdemo-Johansson, M., Alagappan, M., Carlsson, J., Carlsson, G.
+		Extracting insights from the shape of complex data using topology.
+		\emph{Scientific Reports} \textbf{3} (\textbf{2013}), 1236.
+
+		\bibitem{carriere2018} Carri\`ere, M., Oudot, S. Structure and
+		Stability of the One-Dimensional Mapper. \emph{Foundations of
+		Computational Mathematics} \textbf{18} (\textbf{2018}), 1333--1396.
+
+	\end{thebibliography}
+
+	\bigskip
+	\begin{flushleft}
+		(Guilherme Vituri)\,\, \textsc{[Simbolic Mind]}\\
+		\emph{Email address:}  \texttt{viturivituri@gmail.com}
+	\end{flushleft}
+
+\end{document}
