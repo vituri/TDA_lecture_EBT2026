@@ -1,0 +1,129 @@
+n=1513  features=18  baseline purity=0.463
+
+pairwise distance quantiles (600-pt subsample):
+  q0.001  = 1.290
+  q0.005  = 1.646
+  q0.010  = 1.841
+  q0.025  = 2.181
+  q0.050  = 2.515
+  q0.100  = 2.964
+  q0.250  = 3.877
+  q0.500  = 5.176
+
+══ 1-D filters ══
+pc1  U(14,0.4) db2.0/3                 nodes=  38 edges=   45 comp=  7 loops=  14  tips= 13 branch= 14 iso=  3  maxnode= 440 med=  6.0  purity=0.764
+pc1  U(14,0.4) db2.5/3                 nodes=  26 edges=   29 comp=  4 loops=   7  tips=  8 branch= 13 iso=  3  maxnode= 452 med= 17.5  purity=0.696
+pc1  U(14,0.6) db2.0/3                 nodes=  38 edges=   46 comp=  6 loops=  14  tips= 16 branch= 15 iso=  2  maxnode= 474 med=  5.0  purity=0.774
+pc1  U(14,0.6) db2.5/3                 nodes=  26 edges=   30 comp=  3 loops=   7  tips=  8 branch= 13 iso=  2  maxnode= 489 med= 19.0  purity=0.697
+pc1  U(20,0.4) db2.0/3                 nodes=  45 edges=   59 comp=  4 loops=  18  tips= 13 branch= 18 iso=  2  maxnode= 299 med=  8.0  purity=0.717
+pc1  U(20,0.4) db2.5/3                 nodes=  32 edges=   40 comp=  3 loops=  11  tips=  6 branch= 17 iso=  2  maxnode= 303 med= 17.0  purity=0.686
+pc1  U(20,0.6) db2.0/3                 nodes=  49 edges=   68 comp=  6 loops=  25  tips= 12 branch= 23 iso=  2  maxnode= 337 med=  6.0  purity=0.738
+pc1  U(20,0.6) db2.5/3                 nodes=  34 edges=   44 comp=  3 loops=  13  tips=  6 branch= 18 iso=  2  maxnode= 354 med= 16.5  purity=0.693
+pc1  U(30,0.4) db2.0/3                 nodes=  61 edges=   85 comp=  6 loops=  30  tips= 13 branch= 28 iso=  3  maxnode= 243 med= 17.0  purity=0.705
+pc1  U(30,0.4) db2.5/3                 nodes=  51 edges=   62 comp=  5 loops=  16  tips=  9 branch= 24 iso=  3  maxnode= 245 med= 10.0  purity=0.710
+pc1  U(30,0.6) db2.0/3                 nodes=  60 edges=   87 comp=  4 loops=  31  tips= 11 branch= 29 iso=  2  maxnode= 261 med= 17.0  purity=0.700
+pc1  U(30,0.6) db2.5/3                 nodes=  49 edges=   66 comp=  3 loops=  20  tips=  9 branch= 26 iso=  1  maxnode= 265 med= 12.0  purity=0.680
+ecc  U(14,0.4) db2.0/3                 nodes=  43 edges=   50 comp=  6 loops=  13  tips= 20 branch= 10 iso=  3  maxnode= 838 med=  6.0  purity=0.797
+ecc  U(14,0.4) db2.5/3                 nodes=  26 edges=   29 comp=  5 loops=   8  tips=  9 branch=  8 iso=  3  maxnode= 913 med=  6.5  purity=0.745
+ecc  U(14,0.6) db2.0/3                 nodes=  42 edges=   48 comp=  7 loops=  13  tips= 20 branch= 13 iso=  2  maxnode= 905 med=  6.5  purity=0.775
+ecc  U(14,0.6) db2.5/3                 nodes=  24 edges=   29 comp=  4 loops=   9  tips=  6 branch=  8 iso=  2  maxnode= 992 med= 13.0  purity=0.722
+ecc  U(20,0.4) db2.0/3                 nodes=  47 edges=   48 comp=  8 loops=   9  tips= 26 branch= 12 iso=  3  maxnode= 552 med=  5.0  purity=0.763
+ecc  U(20,0.4) db2.5/3                 nodes=  34 edges=   39 comp=  6 loops=  11  tips= 10 branch= 13 iso=  3  maxnode= 633 med=  9.0  purity=0.748
+ecc  U(20,0.6) db2.0/3                 nodes=  52 edges=   58 comp=  7 loops=  13  tips= 26 branch= 12 iso=  2  maxnode= 606 med=  4.5  purity=0.776
+ecc  U(20,0.6) db2.5/3                 nodes=  35 edges=   44 comp=  5 loops=  14  tips= 10 branch= 14 iso=  2  maxnode= 726 med=  9.0  purity=0.748
+ecc  U(30,0.4) db2.0/3                 nodes=  61 edges=   77 comp=  7 loops=  23  tips= 23 branch= 22 iso=  2  maxnode= 412 med=  5.0  purity=0.756
+ecc  U(30,0.4) db2.5/3                 nodes=  45 edges=   53 comp=  6 loops=  14  tips= 13 branch= 20 iso=  2  maxnode= 457 med=  9.0  purity=0.725
+ecc  U(30,0.6) db2.0/3                 nodes=  63 edges=   88 comp=  6 loops=  31  tips= 15 branch= 24 iso=  2  maxnode= 480 med=  5.0  purity=0.766
+ecc  U(30,0.6) db2.5/3                 nodes=  46 edges=   56 comp=  5 loops=  15  tips= 11 branch= 19 iso=  2  maxnode= 519 med=  8.0  purity=0.722
+dens  U(14,0.4) db2.0/3                nodes=  20 edges=    7 comp= 13 loops=   0  tips= 10 branch=  0 iso=  8  maxnode=1122 med=  3.5  purity=0.913
+dens  U(14,0.4) db2.5/3                nodes=  16 edges=    7 comp=  9 loops=   0  tips= 10 branch=  0 iso=  4  maxnode=1351 med=  3.0  purity=0.903
+dens  U(14,0.6) db2.0/3                nodes=  20 edges=    7 comp= 13 loops=   0  tips= 10 branch=  0 iso=  8  maxnode=1123 med=  3.5  purity=0.913
+dens  U(14,0.6) db2.5/3                nodes=  16 edges=    7 comp=  9 loops=   0  tips= 10 branch=  0 iso=  4  maxnode=1352 med=  3.0  purity=0.903
+dens  U(20,0.4) db2.0/3                nodes=  24 edges=   10 comp= 14 loops=   0  tips= 10 branch=  0 iso=  9  maxnode=1110 med=  3.0  purity=0.927
+dens  U(20,0.4) db2.5/3                nodes=  20 edges=   10 comp= 10 loops=   0  tips= 10 branch=  0 iso=  5  maxnode=1339 med=  3.0  purity=0.922
+dens  U(20,0.6) db2.0/3                nodes=  24 edges=   12 comp= 12 loops=   0  tips=  8 branch=  0 iso=  8  maxnode=1113 med=  3.5  purity=0.927
+dens  U(20,0.6) db2.5/3                nodes=  20 edges=   12 comp=  8 loops=   0  tips=  8 branch=  0 iso=  4  maxnode=1342 med=  3.0  purity=0.921
+dens  U(30,0.4) db2.0/3                nodes=  26 edges=   10 comp= 16 loops=   0  tips=  8 branch=  0 iso= 12  maxnode=1094 med=  3.0  purity=0.932
+dens  U(30,0.4) db2.5/3                nodes=  22 edges=   10 comp= 12 loops=   0  tips=  8 branch=  0 iso=  8  maxnode=1323 med=  3.0  purity=0.928
+dens  U(30,0.6) db2.0/3                nodes=  28 edges=   12 comp= 16 loops=   0  tips= 10 branch=  0 iso= 11  maxnode=1098 med=  3.0  purity=0.937
+dens  U(30,0.6) db2.5/3                nodes=  24 edges=   12 comp= 12 loops=   0  tips= 10 branch=  0 iso=  7  maxnode=1327 med=  3.0  purity=0.934
+attack  U(14,0.4) db2.0/3              nodes=  41 edges=   50 comp=  4 loops=  13  tips= 18 branch= 13 iso=  2  maxnode= 631 med=  7.0  purity=0.769
+attack  U(14,0.4) db2.5/3              nodes=  30 edges=   42 comp=  2 loops=  14  tips=  7 branch= 15 iso=  0  maxnode= 654 med= 10.5  purity=0.710
+attack  U(14,0.6) db2.0/3              nodes=  42 edges=   56 comp=  3 loops=  17  tips= 15 branch= 14 iso=  1  maxnode= 682 med=  6.0  purity=0.751
+attack  U(14,0.6) db2.5/3              nodes=  30 edges=   42 comp=  2 loops=  14  tips=  8 branch= 16 iso=  0  maxnode= 711 med= 13.5  purity=0.680
+attack  U(20,0.4) db2.0/3              nodes=  47 edges=   65 comp=  4 loops=  22  tips= 11 branch= 19 iso=  3  maxnode= 501 med=  8.0  purity=0.718
+attack  U(20,0.4) db2.5/3              nodes=  35 edges=   42 comp=  3 loops=  10  tips=  8 branch= 16 iso=  2  maxnode= 518 med= 14.0  purity=0.707
+attack  U(20,0.6) db2.0/3              nodes=  49 edges=   76 comp=  3 loops=  30  tips=  8 branch= 22 iso=  2  maxnode= 545 med=  8.0  purity=0.738
+attack  U(20,0.6) db2.5/3              nodes=  36 edges=   48 comp=  3 loops=  15  tips=  7 branch= 19 iso=  2  maxnode= 563 med= 15.5  purity=0.719
+attack  U(30,0.4) db2.0/3              nodes=  68 edges=   92 comp=  4 loops=  28  tips= 19 branch= 27 iso=  1  maxnode= 332 med=  9.0  purity=0.744
+attack  U(30,0.4) db2.5/3              nodes=  51 edges=   66 comp=  4 loops=  19  tips= 12 branch= 26 iso=  1  maxnode= 343 med= 12.0  purity=0.722
+attack  U(30,0.6) db2.0/3              nodes=  69 edges=   96 comp=  4 loops=  31  tips= 19 branch= 30 iso=  1  maxnode= 355 med= 10.0  purity=0.741
+attack  U(30,0.6) db2.5/3              nodes=  49 edges=   68 comp=  3 loops=  22  tips=  6 branch= 28 iso=  1  maxnode= 366 med= 13.0  purity=0.710
+
+══ 2-D lenses (R2Cover) ══
+pc1×ecc  8x8(0.4) mc=3                 nodes=  50 edges=  126 comp=  3 loops=  79  tips=  6 branch= 42 iso=  1  maxnode= 643 med=  6.0  purity=0.751
+pc1×ecc  8x8(0.4) mc=5                 nodes=  41 edges=  112 comp=  2 loops=  73  tips=  3 branch= 37 iso=  1  maxnode= 643 med= 13.0  purity=0.728
+pc1×ecc  8x8(0.5) mc=3                 nodes=  52 edges=  136 comp=  3 loops=  87  tips=  5 branch= 45 iso=  1  maxnode= 730 med=  7.0  purity=0.740
+pc1×ecc  8x8(0.5) mc=5                 nodes=  44 edges=  124 comp=  2 loops=  82  tips=  2 branch= 41 iso=  1  maxnode= 730 med= 12.5  purity=0.723
+pc1×ecc  10x10(0.4) mc=3               nodes=  56 edges=  150 comp=  6 loops= 100  tips=  3 branch= 49 iso=  4  maxnode= 600 med= 10.0  purity=0.693
+pc1×ecc  10x10(0.4) mc=5               nodes=  53 edges=  148 comp=  5 loops= 100  tips=  3 branch= 47 iso=  3  maxnode= 600 med= 12.0  purity=0.699
+pc1×ecc  10x10(0.5) mc=3               nodes=  65 edges=  191 comp=  6 loops= 132  tips=  4 branch= 57 iso=  4  maxnode= 647 med=  7.0  purity=0.708
+pc1×ecc  10x10(0.5) mc=5               nodes=  57 edges=  168 comp=  5 loops= 116  tips=  4 branch= 50 iso=  3  maxnode= 647 med= 12.0  purity=0.687
+pc1×ecc  12x12(0.4) mc=3               nodes=  76 edges=  222 comp=  3 loops= 149  tips=  2 branch= 69 iso=  2  maxnode= 475 med=  7.0  purity=0.762
+pc1×ecc  12x12(0.4) mc=5               nodes=  68 edges=  200 comp=  3 loops= 135  tips=  2 branch= 63 iso=  2  maxnode= 475 med=  9.0  purity=0.748
+pc1×ecc  12x12(0.5) mc=3               nodes=  78 edges=  238 comp=  3 loops= 163  tips=  3 branch= 70 iso=  2  maxnode= 512 med=  8.0  purity=0.759
+pc1×ecc  12x12(0.5) mc=5               nodes=  70 edges=  216 comp=  3 loops= 149  tips=  3 branch= 64 iso=  2  maxnode= 512 med= 10.5  purity=0.745
+pc1×pc2  8x8(0.4) mc=3                 nodes=  78 edges=  239 comp=  3 loops= 164  tips=  4 branch= 70 iso=  2  maxnode= 446 med=  7.0  purity=0.796
+pc1×pc2  8x8(0.4) mc=5                 nodes=  70 edges=  219 comp=  3 loops= 152  tips=  4 branch= 63 iso=  2  maxnode= 446 med=  7.5  purity=0.786
+pc1×pc2  8x8(0.5) mc=3                 nodes=  82 edges=  253 comp=  3 loops= 174  tips=  6 branch= 72 iso=  1  maxnode= 497 med=  7.0  purity=0.790
+pc1×pc2  8x8(0.5) mc=5                 nodes=  74 edges=  232 comp=  3 loops= 161  tips=  6 branch= 65 iso=  1  maxnode= 497 med=  8.5  purity=0.781
+pc1×pc2  10x10(0.4) mc=3               nodes= 111 edges=  323 comp=  6 loops= 218  tips= 12 branch= 94 iso=  3  maxnode= 284 med=  5.0  purity=0.789
+pc1×pc2  10x10(0.4) mc=5               nodes= 103 edges=  310 comp=  5 loops= 212  tips= 10 branch= 90 iso=  2  maxnode= 284 med=  6.0  purity=0.787
+pc1×pc2  10x10(0.5) mc=3               nodes= 119 edges=  379 comp=  5 loops= 265  tips=  6 branch=106 iso=  2  maxnode= 321 med=  6.0  purity=0.795
+pc1×pc2  10x10(0.5) mc=5               nodes= 108 edges=  353 comp=  5 loops= 250  tips=  5 branch= 98 iso=  2  maxnode= 321 med=  7.0  purity=0.794
+pc1×pc2  12x12(0.4) mc=3               nodes= 146 edges=  390 comp=  8 loops= 252  tips= 13 branch=121 iso=  5  maxnode= 223 med=  5.0  purity=0.819
+pc1×pc2  12x12(0.4) mc=5               nodes= 138 edges=  369 comp=  8 loops= 239  tips= 12 branch=115 iso=  5  maxnode= 223 med=  5.0  purity=0.816
+pc1×pc2  12x12(0.5) mc=3               nodes= 153 edges=  450 comp=  6 loops= 303  tips= 12 branch=133 iso=  4  maxnode= 258 med=  5.0  purity=0.819
+pc1×pc2  12x12(0.5) mc=5               nodes= 145 edges=  430 comp=  6 loops= 291  tips= 11 branch=127 iso=  4  maxnode= 258 med=  5.0  purity=0.814
+ecc×attack  8x8(0.4) mc=3              nodes=  56 edges=  162 comp=  2 loops= 108  tips=  6 branch= 49 iso=  0  maxnode= 616 med=  6.0  purity=0.755
+ecc×attack  8x8(0.4) mc=5              nodes=  50 edges=  150 comp=  2 loops= 102  tips=  4 branch= 45 iso=  0  maxnode= 616 med=  6.5  purity=0.756
+ecc×attack  8x8(0.5) mc=3              nodes=  61 edges=  187 comp=  2 loops= 128  tips=  6 branch= 55 iso=  0  maxnode= 744 med=  7.0  purity=0.737
+ecc×attack  8x8(0.5) mc=5              nodes=  53 edges=  168 comp=  2 loops= 117  tips=  4 branch= 49 iso=  0  maxnode= 744 med=  8.0  purity=0.728
+ecc×attack  10x10(0.4) mc=3            nodes=  70 edges=  193 comp=  6 loops= 129  tips=  9 branch= 55 iso=  2  maxnode= 664 med=  7.0  purity=0.769
+ecc×attack  10x10(0.4) mc=5            nodes=  64 edges=  181 comp=  6 loops= 123  tips=  9 branch= 52 iso=  2  maxnode= 664 med=  9.5  purity=0.756
+ecc×attack  10x10(0.5) mc=3            nodes=  72 edges=  227 comp=  6 loops= 161  tips=  8 branch= 61 iso=  2  maxnode= 745 med=  7.5  purity=0.756
+ecc×attack  10x10(0.5) mc=5            nodes=  66 edges=  213 comp=  6 loops= 153  tips=  8 branch= 56 iso=  2  maxnode= 745 med= 10.5  purity=0.746
+ecc×attack  12x12(0.4) mc=3            nodes=  99 edges=  273 comp=  7 loops= 181  tips= 15 branch= 77 iso=  1  maxnode= 602 med=  5.0  purity=0.771
+ecc×attack  12x12(0.4) mc=5            nodes=  84 edges=  239 comp=  6 loops= 161  tips= 14 branch= 67 iso=  0  maxnode= 602 med=  6.0  purity=0.755
+ecc×attack  12x12(0.5) mc=3            nodes= 101 edges=  297 comp=  6 loops= 202  tips= 13 branch= 84 iso=  0  maxnode= 670 med=  5.0  purity=0.772
+ecc×attack  12x12(0.5) mc=5            nodes=  89 edges=  262 comp=  6 loops= 179  tips= 13 branch= 74 iso=  0  maxnode= 670 med=  6.0  purity=0.762
+
+══ nerve thresholds (pc1×ecc 10x10, exp 0.5, mc=3) ══
+nerve=Simple                           nodes=  65 edges=  191 comp=  6 loops= 132  tips=  4 branch= 57 iso=  4  maxnode= 647 med=  7.0  purity=0.708
+nerve=MinCount(3)                      nodes=  65 edges=  119 comp= 14 loops=  68  tips= 10 branch= 41 iso= 12  maxnode= 647 med=  7.0  purity=0.708
+nerve=MinCount(5)                      nodes=  65 edges=   82 comp= 29 loops=  46  tips=  6 branch= 30 iso= 27  maxnode= 647 med=  7.0  purity=0.708
+nerve=Jaccard(0.05)                    nodes=  65 edges=  107 comp= 11 loops=  53  tips=  9 branch= 43 iso=  9  maxnode= 647 med=  7.0  purity=0.708
+nerve=Jaccard(0.1)                     nodes=  65 edges=   81 comp= 14 loops=  30  tips= 10 branch= 35 iso= 11  maxnode= 647 med=  7.0  purity=0.708
+nerve=Pct(0.15)                        nodes=  65 edges=  164 comp=  6 loops= 105  tips=  4 branch= 57 iso=  4  maxnode= 647 med=  7.0  purity=0.708
+
+══ expansion sweep (pc1, 14 slices, DBscan(2.5,3)) — layering breaks at e>1 ══
+pc1  U(14, 0.2)                        nodes=  25 edges=   28 comp=  4 loops=   7  tips=  7 branch= 12 iso=  3  maxnode= 405 med= 18.0  purity=0.689
+pc1  U(14, 0.4)                        nodes=  26 edges=   29 comp=  4 loops=   7  tips=  8 branch= 13 iso=  3  maxnode= 452 med= 17.5  purity=0.696
+pc1  U(14, 0.8)                        nodes=  26 edges=   32 comp=  2 loops=   8  tips=  7 branch= 13 iso=  1  maxnode= 517 med= 22.0  purity=0.684
+pc1  U(14, 1.0)                        nodes=  28 edges=   37 comp=  1 loops=  10  tips=  5 branch= 12 iso=  0  maxnode= 566 med= 18.5  purity=0.685
+pc1  U(14, 1.4)                        nodes=  32 edges=   74 comp=  1 loops=  43  tips=  1 branch= 21 iso=  0  maxnode= 687 med= 15.5  purity=0.694
+pc1  U(14, 2.0)                        nodes=  33 edges=   82 comp=  3 loops=  52  tips=  1 branch= 24 iso=  0  maxnode= 847 med= 20.0  purity=0.670
+
+══ ball mapper ══
+ball  L=80 eps=2.5                     nodes=  80 edges=    4 comp= 76 loops=   0  tips=  6 branch=  0 iso= 73  maxnode= 182 med=  1.0  purity=0.943
+ball  L=80 eps=3.0                     nodes=  80 edges=   90 comp= 39 loops=  49  tips= 12 branch= 24 iso= 36  maxnode= 266 med=  3.0  purity=0.842
+ball  L=80 eps=3.5                     nodes=  80 edges=  334 comp= 17 loops= 271  tips=  6 branch= 52 iso= 15  maxnode= 371 med= 10.0  purity=0.803
+ball  L=80 eps=4.0                     nodes=  80 edges=  707 comp=  8 loops= 635  tips=  2 branch= 70 iso=  7  maxnode= 509 med= 32.5  purity=0.774
+ball  L=120 eps=2.5                    nodes= 120 edges=   36 comp= 95 loops=  11  tips= 15 branch= 11 iso= 89  maxnode= 182 med=  1.5  purity=0.937
+ball  L=120 eps=3.0                    nodes= 120 edges=  348 comp= 35 loops= 263  tips= 11 branch= 68 iso= 33  maxnode= 266 med=  6.5  purity=0.826
+ball  L=120 eps=3.5                    nodes= 120 edges= 1157 comp= 17 loops=1054  tips=  9 branch= 97 iso= 14  maxnode= 431 med= 28.5  purity=0.781
+ball  L=120 eps=4.0                    nodes= 120 edges= 2244 comp=  7 loops=2131  tips=  2 branch=111 iso=  6  maxnode= 647 med= 73.5  purity=0.750
+ball  L=200 eps=2.5                    nodes= 200 edges=  248 comp=105 loops= 153  tips= 24 branch= 65 iso= 99  maxnode= 182 med=  2.0  purity=0.900
+ball  L=200 eps=3.0                    nodes= 200 edges= 1716 comp= 34 loops=1550  tips=  8 branch=154 iso= 31  maxnode= 266 med= 11.0  purity=0.810
+ball  L=200 eps=3.5                    nodes= 200 edges= 4722 comp= 14 loops=4536  tips=  2 branch=182 iso= 11  maxnode= 476 med= 39.5  purity=0.764
+ball  L=200 eps=4.0                    nodes= 200 edges= 8240 comp=  7 loops=8047  tips=  0 branch=193 iso=  6  maxnode= 683 med= 98.0  purity=0.728

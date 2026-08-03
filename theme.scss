@@ -653,6 +653,38 @@ $code-block-font-size: 0.54em;
   max-height: 650px;
 }
 
+.ball-mapper-explainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 340px;
+  margin: -0.15em 0 0;
+}
+
+.ball-mapper-explainer img {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  object-fit: contain;
+}
+
+.ball-mapper-explainer p {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.ball-mapper-cards .card {
+  padding: 0.52em 0.65em;
+  font-size: 0.62em;
+}
+
+.ball-mapper-cards .card-title {
+  margin-bottom: 0.3em;
+  font-size: 0.74em;
+}
+
 .filter-comparison {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

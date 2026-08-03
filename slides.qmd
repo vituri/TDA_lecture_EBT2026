@@ -912,11 +912,13 @@ Same 146 clusters. Same purity. Only the definition of an **edge** changed. Once
 The **ordering of roles is stable**. The branch structure is not. Stability theory holds the cover fixed; choosing the cover remains the open problem.
 :::
 
-## Ball Mapper covers the data directly
+## Ball Mapper covers the data directly {.ball-mapper-slide}
 
-Ball Mapper removes the lens and replaces pullbacks by metric balls around landmarks.
+<div class="ball-mapper-explainer">
+![](figures/ball_mapper_explainer.png){fig-alt="A Julia-generated Ball Mapper construction: a circular point cloud with seven farthest-point landmarks, epsilon balls around them, and the resulting seven-node nerve cycle"}
+</div>
 
-::: {.card-grid style="margin-top:.75em"}
+::: {.card-grid .ball-mapper-cards style="margin-top:.15em"}
 ::: {.card .tint-plum}
 <div class="card-title">01 · landmarks</div>
 
@@ -940,7 +942,7 @@ An edge requires a **shared observation**, not merely intersecting geometric bal
 :::
 :::
 
-::: {.callout-line .fragment style="margin-top:.75em"}
+::: {.callout-line .fragment style="margin-top:.4em"}
 No filter and no within-slice clustering—but the metric, landmarks, radius, and nerve rule still encode modelling choices.
 :::
 

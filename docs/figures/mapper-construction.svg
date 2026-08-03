@@ -1,0 +1,181 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 540" role="img" aria-labelledby="title desc">
+  <title id="title">From a point cloud to a Mapper graph</title>
+  <desc id="desc">A loop-shaped point cloud is mapped by height to four overlapping intervals. Pulling the intervals back and clustering produces six clusters. Their nerve is a six-node loop.</desc>
+
+  <defs>
+    <linearGradient id="height-gradient" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#a63a14"/>
+      <stop offset="0.34" stop-color="#ff6e00"/>
+      <stop offset="0.67" stop-color="#ff8a2b"/>
+      <stop offset="1" stop-color="#ffb367"/>
+    </linearGradient>
+    <filter id="soft-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000000" flood-opacity="0.24"/>
+    </filter>
+    <marker id="arrowhead" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#777777"/>
+    </marker>
+    <!-- One canonical sample, reused verbatim in stages 1 and 2. -->
+    <path id="canonical-loop" d="M110 12 C166 12 196 50 196 103 C196 134 184 159 177 178 C191 212 200 260 188 282 C174 310 145 336 110 338 C75 336 46 310 32 282 C20 260 29 212 43 178 C36 159 24 134 24 103 C24 50 54 12 110 12 Z"/>
+    <g id="canonical-point-cloud">
+      <g fill="#ffb367">
+        <circle cx="110" cy="12" r="6"/><circle cx="137" cy="16" r="6"/><circle cx="160" cy="29" r="6"/><circle cx="179" cy="49" r="6"/><circle cx="191" cy="75" r="6"/><circle cx="196" cy="103" r="6"/>
+        <circle cx="24" cy="103" r="6"/><circle cx="29" cy="75" r="6"/><circle cx="41" cy="49" r="6"/><circle cx="60" cy="29" r="6"/><circle cx="83" cy="16" r="6"/>
+      </g>
+      <g fill="#ff8a2b">
+        <circle cx="194" cy="130" r="6"/><circle cx="187" cy="154" r="6"/><circle cx="177" cy="178" r="6"/>
+        <circle cx="43" cy="178" r="6"/><circle cx="33" cy="154" r="6"/><circle cx="26" cy="130" r="6"/>
+      </g>
+      <g fill="#ff6e00">
+        <circle cx="185" cy="203" r="6"/><circle cx="193" cy="229" r="6"/><circle cx="195" cy="256" r="6"/>
+        <circle cx="25" cy="256" r="6"/><circle cx="27" cy="229" r="6"/><circle cx="35" cy="203" r="6"/>
+      </g>
+      <g fill="#c64c18">
+        <circle cx="188" cy="282" r="6"/><circle cx="174" cy="305" r="6"/><circle cx="154" cy="323" r="6"/><circle cx="132" cy="334" r="6"/><circle cx="110" cy="338" r="6"/>
+        <circle cx="88" cy="334" r="6"/><circle cx="66" cy="323" r="6"/><circle cx="46" cy="305" r="6"/><circle cx="32" cy="282" r="6"/>
+      </g>
+    </g>
+  </defs>
+
+  <!-- Stage headings -->
+  <g font-family="Arial, Helvetica, sans-serif">
+    <g transform="translate(32 20)">
+      <circle cx="20" cy="20" r="20" fill="#ff6e00"/>
+      <text x="20" y="27" text-anchor="middle" fill="#111111" font-size="19" font-weight="800">1</text>
+      <text x="54" y="18" fill="#fafafa" font-size="24" font-weight="750">Cover the filter range</text>
+      <text x="54" y="43" fill="#a0a0a0" font-size="17">overlapping intervals in height</text>
+    </g>
+    <g transform="translate(530 20)">
+      <circle cx="20" cy="20" r="20" fill="#ff6e00"/>
+      <text x="20" y="27" text-anchor="middle" fill="#111111" font-size="19" font-weight="800">2</text>
+      <text x="54" y="18" fill="#fafafa" font-size="24" font-weight="750">Pull back and cluster</text>
+      <text x="54" y="43" fill="#a0a0a0" font-size="17">one or two components per slice</text>
+    </g>
+    <g transform="translate(1100 20)">
+      <circle cx="20" cy="20" r="20" fill="#ff6e00"/>
+      <text x="20" y="27" text-anchor="middle" fill="#111111" font-size="19" font-weight="800">3</text>
+      <text x="54" y="18" fill="#fafafa" font-size="24" font-weight="750">Take the nerve</text>
+      <text x="54" y="43" fill="#a0a0a0" font-size="17">shared points become edges</text>
+    </g>
+  </g>
+
+  <!-- Connecting arrows -->
+  <g fill="none" stroke="#777777" stroke-width="3" marker-end="url(#arrowhead)">
+    <path d="M486 282 H516"/>
+    <path d="M1055 282 H1085"/>
+  </g>
+
+  <!-- 1. Cover -->
+  <g font-family="Arial, Helvetica, sans-serif">
+    <!-- filter axis and overlapping cover -->
+    <line x1="89" y1="458" x2="89" y2="102" stroke="#777777" stroke-width="3" marker-end="url(#arrowhead)"/>
+    <text x="77" y="94" fill="#fafafa" font-size="24" font-style="italic">f</text>
+    <text x="44" y="480" fill="#a0a0a0" font-size="16">height</text>
+
+    <g filter="url(#soft-shadow)">
+      <rect x="111" y="360" width="68" height="103" rx="12" fill="#a63a14" fill-opacity="0.82" stroke="#c64c18"/>
+      <rect x="111" y="280" width="68" height="100" rx="12" fill="#ff6e00" fill-opacity="0.78" stroke="#ff8a2b"/>
+      <rect x="111" y="200" width="68" height="100" rx="12" fill="#ff8a2b" fill-opacity="0.78" stroke="#ff9b3d"/>
+      <rect x="111" y="105" width="68" height="115" rx="12" fill="#ffb367" fill-opacity="0.84" stroke="#ffd3a1"/>
+    </g>
+    <g fill="#111111" font-size="17" font-weight="800" text-anchor="middle">
+      <text x="145" y="420">U₁</text>
+      <text x="145" y="340">U₂</text>
+      <text x="145" y="251">U₃</text>
+      <text x="145" y="164">U₄</text>
+    </g>
+
+    <!-- The exact finite sample that will be reused in the pullback panel. -->
+    <use href="#canonical-loop" transform="translate(233 110)" fill="none" stroke="#303030" stroke-width="15" stroke-linecap="round"/>
+    <use href="#canonical-point-cloud" transform="translate(233 110)"/>
+
+    <!-- slice guides make the cover-to-preimage relationship explicit -->
+    <g stroke="#fafafa" stroke-opacity="0.14" stroke-width="2" stroke-dasharray="6 8">
+      <line x1="189" y1="210" x2="453" y2="210"/>
+      <line x1="189" y1="290" x2="453" y2="290"/>
+      <line x1="189" y1="370" x2="453" y2="370"/>
+    </g>
+    <g fill="#fafafa" font-size="17" font-weight="650">
+      <text x="262" y="501">sampled loop  X</text>
+      <text x="410" y="127" fill="#ffb367">high</text>
+      <text x="412" y="456" fill="#a63a14">low</text>
+    </g>
+  </g>
+
+  <!-- 2. Pullback components -->
+  <g font-family="Arial, Helvetica, sans-serif">
+    <!-- The same scaffold and the same 32 sampled points as stage 1. -->
+    <use href="#canonical-loop" transform="translate(680 110)" fill="none" stroke="#fafafa" stroke-opacity="0.10" stroke-width="3" stroke-dasharray="7 10"/>
+
+    <!-- These six components overlap and together cover every sampled point. -->
+    <g transform="translate(680 110)" filter="url(#soft-shadow)" stroke-width="2">
+      <!-- U4: one top component -->
+      <path d="M8 112 C8 42 52 -8 110 -8 C168 -8 212 42 212 112 L180 112 C178 58 150 20 110 20 C70 20 42 58 40 112 Z" fill="#ffb367" fill-opacity="0.18" stroke="#ffb367"/>
+      <!-- U3: left and right components -->
+      <path d="M12 88 L51 91 C48 124 58 150 67 183 L36 195 C22 164 12 130 12 88 Z" fill="#ff8a2b" fill-opacity="0.18" stroke="#ff8a2b"/>
+      <path d="M208 88 L169 91 C172 124 162 150 153 183 L184 195 C198 164 208 130 208 88 Z" fill="#ff8a2b" fill-opacity="0.18" stroke="#ff8a2b"/>
+      <!-- U2: left and right components -->
+      <path d="M34 166 L67 177 C58 205 48 232 54 270 L14 272 C12 230 20 194 34 166 Z" fill="#ff6e00" fill-opacity="0.18" stroke="#ff6e00"/>
+      <path d="M186 166 L153 177 C162 205 172 232 166 270 L206 272 C208 230 200 194 186 166 Z" fill="#ff6e00" fill-opacity="0.18" stroke="#ff6e00"/>
+      <!-- U1: one bottom component -->
+      <path d="M12 248 L52 250 C52 300 75 324 110 326 C145 324 168 300 168 250 L208 248 C210 310 168 350 110 352 C52 350 10 310 12 248 Z" fill="#a63a14" fill-opacity="0.24" stroke="#c64c18"/>
+    </g>
+
+    <!-- Draw the canonical points once, above the entire pullback cover. -->
+    <use href="#canonical-point-cloud" transform="translate(680 110)"/>
+
+    <!-- Ring, rather than replace, the exact points lying in adjacent pullbacks. -->
+    <g transform="translate(680 110)" fill="none" stroke="#fafafa" stroke-width="3">
+      <circle cx="24" cy="103" r="9"/><circle cx="196" cy="103" r="9"/>
+      <circle cx="43" cy="178" r="9"/><circle cx="177" cy="178" r="9"/>
+      <circle cx="25" cy="256" r="9"/><circle cx="195" cy="256" r="9"/>
+    </g>
+    <path d="M866 286 C930 273 958 242 970 207" fill="none" stroke="#a0a0a0" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <text x="922" y="185" fill="#fafafa" font-size="16" font-weight="700">same point</text>
+    <text x="923" y="205" fill="#a0a0a0" font-size="15">in two pullbacks</text>
+
+    <g fill="#a0a0a0" font-size="16">
+      <text x="615" y="155">U₄</text><text x="615" y="252">U₃</text><text x="615" y="342">U₂</text><text x="615" y="430">U₁</text>
+    </g>
+    <g fill="#fafafa" font-size="16" font-weight="700">
+      <text x="979" y="149">1 cluster</text><text x="979" y="246">2 clusters</text><text x="979" y="337">2 clusters</text><text x="979" y="426">1 cluster</text>
+    </g>
+  </g>
+
+  <!-- 3. Nerve -->
+  <g font-family="Arial, Helvetica, sans-serif">
+    <!-- edges are drawn first so nodes stay crisp -->
+    <g fill="none" stroke="#6d6d6d" stroke-width="9" stroke-linecap="round">
+      <path d="M1286 133 L1192 218 L1184 337 L1286 426"/>
+      <path d="M1286 133 L1380 218 L1388 337 L1286 426"/>
+    </g>
+
+    <g filter="url(#soft-shadow)" stroke="#111111" stroke-width="4">
+      <circle cx="1286" cy="133" r="31" fill="#ffb367"/>
+      <circle cx="1192" cy="218" r="31" fill="#ff8a2b"/>
+      <circle cx="1380" cy="218" r="31" fill="#ff8a2b"/>
+      <circle cx="1184" cy="337" r="31" fill="#ff6e00"/>
+      <circle cx="1388" cy="337" r="31" fill="#ff6e00"/>
+      <circle cx="1286" cy="426" r="31" fill="#a63a14"/>
+    </g>
+
+    <g fill="#111111" text-anchor="middle" font-size="15" font-weight="850">
+      <text x="1286" y="139">U₄</text>
+      <text x="1192" y="224">U₃</text><text x="1380" y="224">U₃</text>
+      <text x="1184" y="343">U₂</text><text x="1388" y="343">U₂</text>
+      <text x="1286" y="432" fill="#fafafa">U₁</text>
+    </g>
+
+    <!-- central negative space emphasizes the recovered cycle -->
+    <path d="M1260 277 C1260 245 1312 245 1312 277 C1312 309 1260 309 1260 277 Z" fill="none" stroke="#ff9b3d" stroke-width="3" stroke-dasharray="5 7"/>
+    <text x="1286" y="283" text-anchor="middle" fill="#ffb367" font-size="16" font-weight="800">1 loop</text>
+
+    <g transform="translate(1128 486)">
+      <circle cx="9" cy="-5" r="7" fill="#fafafa"/>
+      <text x="25" y="1" fill="#a0a0a0" font-size="16">shared point</text>
+      <text x="136" y="1" fill="#777777" font-size="20">⇒</text>
+      <line x1="174" y1="-5" x2="220" y2="-5" stroke="#6d6d6d" stroke-width="7" stroke-linecap="round"/>
+      <text x="234" y="1" fill="#fafafa" font-size="16" font-weight="700">edge</text>
+    </g>
+  </g>
+</svg>
