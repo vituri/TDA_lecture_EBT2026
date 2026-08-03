@@ -4,6 +4,7 @@ subtitle: "A discrete analogue of the Reeb graph"
 author: "Guilherme Vituri"
 institute: "Symbolic Mind · JuliaTDA · XXIV EBT 2026"
 lang: en
+output-file: index.html
 title-slide-attributes:
   data-background-color: "#1a1a1a"
   class: "full-bleed-title"

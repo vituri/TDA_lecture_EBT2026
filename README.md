@@ -18,10 +18,10 @@ opens the deck with live reload. For the presentation build:
 quarto render
 ```
 
-Then open `presentation/slides.html`. The build embeds Reveal.js, the theme, math
+Then open `docs/index.html`. The build embeds Reveal.js, the theme, math
 rendering, interactions, and the selected Julia figures into that HTML file. The
-figures are also copied beside it under `presentation/figures/` for inspection.
-The single HTML file works offline; copying the whole `presentation/` directory
+figures are also copied beside it under `docs/figures/` for inspection.
+The single HTML file works offline; copying the whole `docs/` directory
 is still the safest handoff.
 
 ### Presentation controls

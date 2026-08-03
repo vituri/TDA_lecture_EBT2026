@@ -1,6 +1,6 @@
 project:
   type: default
-  output-dir: presentation
+  output-dir: docs
   render:
     - slides.qmd
 
