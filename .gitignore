@@ -31,3 +31,5 @@ Thumbs.db
 /.julia/
 *.jl.cov
 *.jl.mem
+
+**/*.quarto_ipynb
