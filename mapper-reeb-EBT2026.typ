@@ -3,7 +3,7 @@
 #import "@preview/cetz:0.5.2"
 
 // ──────────────────────────────────────────────────────────────────────────
-//  Palette — tied to the viridis colormap used by the actual Mapper plots
+//  Palette: tied to the viridis colormap used by the actual Mapper plots
 // ──────────────────────────────────────────────────────────────────────────
 #let ink      = rgb("#22252e")
 #let plum     = rgb("#2c2350")   // section / focus backgrounds
@@ -212,7 +212,7 @@ This is exactly the move Singh, Mémoli & Carlsson made in 2007. #cite-tag[PBG\@
 
 #v(0.9em)
 - *Nodes* = clusters of points; their *colour* summarises a value over those points.
-- *Edges* = clusters that *share a point* — the 1-dimensional nerve:
+- *Edges* = clusters that *share a point*; this is the 1-dimensional nerve:
   #h(0.5em) $(v_1, v_2) in E #h(0.3em) <==> #h(0.3em) v_1 inter v_2 != emptyset$.
 
 == The hinge: the nerve lemma
@@ -229,7 +229,7 @@ This is exactly the move Singh, Mémoli & Carlsson made in 2007. #cite-tag[PBG\@
     This is the *one idea* behind everything that follows:
 
     #align(center)[#text(fill: plum, weight: "bold", size: 1.05em)[
-      everything is the nerve of a cover —\ only the cover changes.
+      everything is the nerve of a cover;\ only the cover changes.
     ]]
 
     - Mapper: nerve of a *pullback* cover.
@@ -283,7 +283,7 @@ This is exactly the move Singh, Mémoli & Carlsson made in 2007. #cite-tag[PBG\@
     #image("figures/torus_mapper.png", width: 100%)
     #cite-tag[
       $14$ nodes, $14$ edges, every node of degree $2$: a single cycle. The same
-      shadow the Reeb graph gave us — recovered from a finite sample.
+      shadow the Reeb graph gave us, recovered from a finite sample.
     ]
   ],
 )
@@ -293,7 +293,7 @@ This is exactly the move Singh, Mémoli & Carlsson made in 2007. #cite-tag[PBG\@
 
 == Ball Mapper: drop the filter, keep a scale
 
-No filter function at all — cover $X$ by $epsilon$-balls around landmarks
+No filter function at all: cover $X$ by $epsilon$-balls around landmarks
 $L subset X$, then take the nerve.
 
 #v(0.3em)
@@ -302,7 +302,7 @@ $L subset X$, then take the nerve.
     #align(center)[$ (i,j) in E #h(0.3em) <==> #h(0.3em) B(x_i, epsilon) inter B(x_j, epsilon) != emptyset $]
     #v(0.3em)
     - the 1-skeleton of a *Vietoris–Rips*-flavoured complex, centred on landmarks;
-    - one knob — the radius $epsilon$ — instead of a filter + cover + clustering;
+    - one knob, the radius $epsilon$, instead of a filter + cover + clustering;
     - *contrast:* #accent[Mapper needs a good filter; Ball Mapper trades the filter for a scale.]
     #v(0.2em)
     #cite-tag[Dłotko 2019, arXiv:1901.07410.]
@@ -350,7 +350,7 @@ through three distinct results:
 #v(0.5em)
 #card(fill: rgb("#eaf4f3"))[
   *Structure & stability of the 1-D Mapper* (Carrière–Oudot, FoCM 2018): the
-  Mapper of a Morse-type function is provably *close* to its Reeb graph — small
+  Mapper of a Morse-type function is provably *close* to its Reeb graph: small
   data perturbations move it only a little. #accent[This is the theorem that lets us
   trust the picture.]
 ]
@@ -391,27 +391,27 @@ Strip Mapper to its skeleton and *every* variant is the same two moves:
 #grid(columns: (1fr, 1fr), gutter: 14pt, row-gutter: 12pt,
   card[
     #chip(vblue)[multiscale]
-    *Multiscale Mapper* — cover the codomain at many scales $arrow.r$ a *tower* of
+    *Multiscale Mapper*: cover the codomain at many scales $arrow.r$ a *tower* of
     Mappers, with stability by *interleaving*. #cite-tag[Dey–Mémoli–Wang, SODA 2016]
   ],
   card[
     #chip(vpurple)[codomain]
     *Change the filter's target:* $f arrow.r S^1$ (circular coordinates),
-    $arrow.r$ a graph, $arrow.r RR^d$ — the *Reeb space* / multivariate Mapper.
+    $arrow.r$ a graph, $arrow.r RR^d$, the *Reeb space* / multivariate Mapper.
   ],
   card[
     #chip(vteal)[structure]
-    *Structure & stability of 1-D Mapper* — the clean theorem that makes all of
+    *Structure & stability of 1-D Mapper*: the clean theorem that makes all of
     this rigorous. #cite-tag[Carrière–Oudot, FoCM 2018]
   ],
   card(fill: rgb("#fff7e0"))[
     #chip(vyellow)[learn]
-    *Differentiable Mapper* — and what if the filter were not chosen, but
+    *Differentiable Mapper*: what if the filter were not chosen, but
     *learned*? #h(0.2em) (next slide → the climax)
   ],
 )
 
-== Climax — Differentiable Mapper
+== Climax: Differentiable Mapper
 
 #align(center)[#text(fill: plum, weight: "bold", size: 1.0em)[
   Reeb *fixes* the filter. Mapper *chooses* it. Differentiable Mapper *learns* it.
@@ -421,10 +421,10 @@ Strip Mapper to its skeleton and *every* variant is the same two moves:
 #grid(columns: (1.04fr, 0.96fr), gutter: 18pt,
   [
     Optimise the filter $theta$ by *gradient descent* on a topological loss
-    #cite-tag[Oulhaj–Carrière–Michel, ICML 2024] — implemented in *TDAmapper.jl*.
+    #cite-tag[Oulhaj–Carrière–Michel, ICML 2024]. Implemented in *TDAmapper.jl*.
 
-    - *soft cover* — smooth membership $arrow.r$ hard cover as $s arrow.r infinity$;
-    - *differentiable persistence* — pairing frozen (`@ignore_derivatives`);
+    - *soft cover*: smooth membership $arrow.r$ hard cover as $s arrow.r infinity$;
+    - *differentiable persistence*: pairing frozen (`@ignore_derivatives`);
       diagram *values* carry the gradient;
     - loss = total *extended* persistence; `Zygote` + `Optimisers.Adam`;
     - #accent[Julia's native autodiff is the structural win.]
@@ -449,7 +449,7 @@ Strip Mapper to its skeleton and *every* variant is the same two moves:
     #card(fill: rgb("#eaf4f3"))[
       #set text(size: 0.92em)
       #text(fill: vteal)[*Loop-aware by default.*] Ordinary $0$-D persistence sees
-      branches, not loops: on a *cycle* the loss is *identically zero* — no
+      branches, not loops: on a *cycle* the loss is *identically zero*, so there is no
       gradient at all. So the default loss is *extended* persistence
       ($"Ord"_0 + "Ext"_0 + "Ext"_1$), which is strictly positive on a loop.
     ]
@@ -470,7 +470,7 @@ Strip Mapper to its skeleton and *every* variant is the same two moves:
     - *NBA* player data.
 
     #v(0.3em)
-    The basketball result — *"from 5 to 13" positions* — is Alagappan's, using the
+    The basketball result, *"from 5 to 13" positions*, is Alagappan's, using the
     same Mapper engine (Ayasdi). #cite-tag[Alagappan, MIT Sloan 2012]
   ],
   [
@@ -478,16 +478,16 @@ Strip Mapper to its skeleton and *every* variant is the same two moves:
       #text(fill: vteal, weight: "bold")[Why Mapper, not a scatter?]
       #v(0.3em)
       PCA / UMAP *compress* overlapping styles into one cloud. Mapper keeps the
-      *continuous structure* and turns local groups into *branches* — and the
+      *continuous structure* and turns local groups into *branches*, and the
       branches carry the story.
     ]
     #v(0.4em)
-    // PLACEHOLDER — drop in Alagappan's NBA Mapper figure (MIT Sloan 2012, Fig. 3)
+    // PLACEHOLDER: drop in Alagappan's NBA Mapper figure (MIT Sloan 2012, Fig. 3)
     // or the Lum et al. 2013 breast-cancer graph, with the citation already below.
     #block(fill: mist, inset: 10pt, radius: 6pt, width: 100%)[
       #set align(center)
       #text(size: 0.8em, fill: gray.darken(20%))[
-        #emph[figure slot] — Alagappan's NBA graph \
+        #emph[figure slot]: Alagappan's NBA graph \
         #text(size: 0.85em)[(paste the published figure here)]
       ]
     ]
@@ -506,10 +506,10 @@ Strip Mapper to its skeleton and *every* variant is the same two moves:
     #v(0.2em)
     - *Not a blob:* a defensive chain, an attacking region, joined through
       midfield.
-    - Mapper was *never told the positions* — node purity #accent[$0.67$] vs. a
+    - Mapper was *never told the positions*; node purity #accent[$0.67$] vs. a
       #accent[$0.463$] largest-group baseline.
     - The *tips* are specialists: Benzema, a pure scorer; and a
-      scorer-*and*-creator tip with #accent[Mbappé, Neymar, De Bruyne] — the
+      scorer-*and*-creator tip with #accent[Mbappé, Neymar, De Bruyne], the
       playmaking maximum.
     - #accent[Lewandowski and Messi] are a *two-player* isolated node, Muriel a
       one-player one: outliers, not archetypes.
@@ -523,8 +523,8 @@ Strip Mapper to its skeleton and *every* variant is the same two moves:
 
 == One graph, many stories
 
-Mapper's real strength for exploration: *recolour the same nodes* — same graph,
-same layout — by a different variable.
+Mapper's real strength for exploration: *recolour the same nodes*, keeping the same graph
+and layout while changing the variable.
 
 #v(0.3em)
 #grid(columns: 3, gutter: 10pt,
@@ -545,9 +545,9 @@ same layout — by a different variable.
 #v(0.1em)
 #card(fill: rgb("#eaf4f3"))[
   #set text(size: 0.85em)
-  Goals and defending are #bright[mirror images] — the two ends of the axis the
+  Goals and defending are #bright[mirror images]: the two ends of the axis the
   filter found. #accent[Playmaking is not:] flat along that axis, spiking on a
-  *tip*. That peak is *off-filter* structure — what a PC#sub[1] scatter flattens away.
+  *tip*. That peak is *off-filter* structure, which a PC#sub[1] scatter flattens away.
 ]
 
 == Where do the Brazilians sit?
@@ -555,17 +555,17 @@ same layout — by a different variable.
 #set text(size: 0.88em)
 #grid(columns: (1fr, 1.05fr), gutter: 14pt,
   [
-    $72$ of $1513$ players are Brazilian — a #accent[$4.8%$] base rate.
+    $72$ of $1513$ players are Brazilian, a #accent[$4.8%$] base rate.
 
     #v(0.2em)
-    - The share is *broadly uniform*. No node is "the Brazilian cluster" — the
+    - The share is *broadly uniform*. No node is "the Brazilian cluster"; the
       honest reading is that they are spread across the whole shape.
     - What is worth pointing at is *where the named ones land*: #accent[Neymar] on
       the scorer-and-creator tip beside Mbappé; #accent[Rodrygo] and
       #accent[Gabriel Jesus] in the attacking midfield; #accent[Casemiro] and
       #accent[Fernando] deep among the defenders; #accent[Thiago Silva] on the
       defensive tip.
-    - Both extremes *and* the middle — itself an answer.
+    - Both extremes *and* the middle: itself an answer.
   ],
   align(center + horizon)[
     #image("figures/soccer_brazil.png", width: 100%)
@@ -605,9 +605,9 @@ Same cover ($20$ intervals, expansion $0.6$), same DBSCAN. *Only the filter move
 #v(0.15em)
 #card[
   #set text(size: 0.92em)
-  PC#sub[1] and xG$+$xA give the *same $49$ nodes* — and $68$ vs $76$ edges, $6$ vs
+  PC#sub[1] and xG$+$xA give the *same $49$ nodes*, with $68$ vs $76$ edges, $6$ vs
   $3$ components, $12$ vs $8$ tips. Same resolution, different shape: the
-  #accent[filter] is doing the work, not the cover. Density fails outright —
+  #accent[filter] is doing the work, not the cover. Density fails outright:
   $1113$ of $1513$ players in *one* node, because kNN density is nearly constant
   on the bulk, so its level sets separate nothing.
 ]
@@ -623,7 +623,7 @@ Same cover ($20$ intervals, expansion $0.6$), same DBSCAN. *Only the filter move
     #v(0.2em)
     - Extremes in *different directions* therefore share a slice, and the
       clustering pulls them apart: #accent[$27$ of $51$ nodes are degree-$1$ tips].
-    - The flares end in *individuals* — Messi, Lewandowski and De Bruyne each
+    - The flares end in *individuals*: Messi, Lewandowski and De Bruyne each
       alone in a node of their own; Mbappé and Haaland share a five-player one.
     - The core is two nodes of $581$ and $564$ players, carrying most of the
       spokes. $7$ components: some flares detach completely.
@@ -637,24 +637,24 @@ Same cover ($20$ intervals, expansion $0.6$), same DBSCAN. *Only the filter move
   #text(fill: rgb("#a33"))[*The lens makes the shape.*] A centrality filter
   produces flares *by construction*, so "look, flares" is weaker evidence here
   than the same structure under a filter chosen for meaning. Read this as
-  #emph[who is atypical] — not as #emph[the data is a starfish].
+  #emph[who is atypical], not as #emph[the data is a starfish].
 ]
 
-== Two lenses — and what one filter cannot do
+== Two lenses: what one filter cannot do
 
 #set text(size: 0.82em)
 #grid(columns: (1.45fr, 1fr), gutter: 12pt,
   align(center + horizon)[#image("figures/soccer_2lens.png", width: 100%)],
   [
     `R2Cover(PC₁, PC₂)`: a $12 times 12$ grid of cells.
-    #accent[$146$ nodes, $390$ edges, cycle rank $252$] — and purity rises to
+    #accent[$146$ nodes, $390$ edges, cycle rank $252$], and purity rises to
     $0.82$.
 
     #v(0.3em)
     *Why it looks different.* With *one* filter and expansion $< 1$ only adjacent
     slices meet, and the clusters inside a slice are disjoint. So
     #align(center)[$"node" |-> "its slice"$]
-    is a graph homomorphism onto a *path* — making the graph *bipartite* and
+    is a graph homomorphism onto a *path*, making the graph *bipartite* and
     *triangle-free*.
 
     #v(0.3em)
@@ -667,7 +667,7 @@ Same cover ($20$ intervals, expansion $0.6$), same DBSCAN. *Only the filter move
 #card[
   #set text(size: 0.88em)
   Checked: one filter gives #accent[$0$ triangles] at expansion $0.2$, $0.4$, $0.8$
-  — for DBSCAN, histogram-gap *and* trivial refiners alike. This graph has
+  for DBSCAN, histogram-gap *and* trivial refiners alike. This graph has
   #accent[$322$]. So the web is not a tuning achievement: a $1$-D filter
   #emph[cannot] produce it.
 ]
@@ -703,7 +703,7 @@ Slices $i$ and $i+2$ sit two steps apart, so they first meet exactly when
   #set text(size: 0.9em)
   Crossing the threshold *doubles the edges* and takes the cycle rank from $7$ to
   $43$. Below it the graph is a layered, Reeb-like object; above it, edges jump
-  between non-adjacent level sets and #accent[that reading is gone] — the loops
+  between non-adjacent level sets and #accent[that reading is gone]. The loops
   you would go on to measure are artefacts of the cover, not of the data.
 ]
 
@@ -720,7 +720,7 @@ Slices $i$ and $i+2$ sit two steps apart, so they first meet exactly when
     #align(center)[#text(size: 0.95em)[Jaccard $>= 0.1$]]
   ],
   [
-    The two-lens graph again — *same cover, same clusters, same $146$ nodes, same
+    The two-lens graph again: *same cover, same clusters, same $146$ nodes, same
     purity $0.82$*. Only the rule for drawing an *edge* changed.
 
     #v(0.3em)
@@ -730,7 +730,7 @@ Slices $i$ and $i+2$ sit two steps apart, so they first meet exactly when
 
     #v(0.3em)
     Requiring a *substantial* overlap rather than one shared player removes most of
-    the homology — and the loop still plainly visible on the right is one of the
+    the homology, and the loop still plainly visible on the right is one of the
     #accent[$85$ that survive] instead of one of $252$. Thresholding the nerve is
     how you find out which cycles were overlap noise.
     #cite-tag[`Nerves`: Simple, MinCount, Percentage, Jaccard]
@@ -746,27 +746,27 @@ The cover and the clustering are *choices*. Change the resolution:
 #grid(columns: 3, gutter: 8pt, align: center,
   [
     #image("figures/soccer_coarse.png", width: 100%)
-    #text(size: 0.85em)[*coarse* — 12 nodes]
+    #text(size: 0.85em)[*coarse*: 12 nodes]
   ],
   [
     #image("figures/soccer_position.png", width: 100%)
-    #text(size: 0.85em)[*as read* — 22 nodes]
+    #text(size: 0.85em)[*as read*: 22 nodes]
   ],
   [
     #image("figures/soccer_fine.png", width: 100%)
-    #text(size: 0.85em)[*fine* — 45 nodes]
+    #text(size: 0.85em)[*fine*: 45 nodes]
   ],
 )
 
 #v(0.1em)
 #card(fill: rgb("#fbeaea"))[
   #set text(size: 0.88em)
-  #text(fill: rgb("#a33"))[*Be honest.*] Coarsen and the branches vanish — a pure
+  #text(fill: rgb("#a33"))[*Be honest.*] Coarsen and the branches vanish, leaving a pure
   defender#[--]midfield#[--]forward *path*. Refine and it fragments into $5$
   components. The *ordering of roles* is stable; the *branch structure is not*.
   #accent[And note what the stability theory does #emph[not] cover:] Carrière#[--]Oudot
   bounds perturbations of the *data* at a #emph[fixed] cover. Changing the cover
-  is outside its hypotheses — which is exactly why *choosing* the cover is the
+  is outside its hypotheses. This is exactly why *choosing* the cover is the
   open problem.
 ]
 
@@ -788,8 +788,8 @@ The cover and the clustering are *choices*. Change the resolution:
     $100$ farthest-point landmarks, balls of radius $epsilon$, *no filter at all*.
 
     #v(0.25em)
-    - At $3.0$: *dust* — $36$ of the $100$ landmarks isolated.
-    - At $3.6$: *hairball* — $673$ independent cycles.
+    - At $3.0$: *dust*, with $36$ of the $100$ landmarks isolated.
+    - At $3.6$: *hairball*, with $673$ independent cycles.
     - There is no useful window in between.
 
     #v(0.25em)
@@ -804,7 +804,7 @@ The cover and the clustering are *choices*. Change the resolution:
   #set text(size: 0.9em)
   Ball Mapper's virtue is having *no filter to choose*; the price is that the one
   remaining knob carries all the weight. #accent[Here that is an argument for the
-  filter] — a lens contributes the very thing a global radius lacks, a direction
+  filter]: a lens contributes the very thing a global radius lacks, a direction
   along which "nearby" is allowed to mean different things.
 ]
 
@@ -818,7 +818,7 @@ The cover and the clustering are *choices*. Change the resolution:
   Reeb #bright[fixes] the filter · Mapper #bright[chooses] it · Differentiable Mapper #bright[learns] it.
 
   #v(0.5em)
-  #hot[And throughout — everything is the nerve of a cover.]
+  #hot[And throughout, everything is the nerve of a cover.]
 ]
 
 == Open problems & the JuliaTDA stack
@@ -826,10 +826,10 @@ The cover and the clustering are *choices*. Change the resolution:
 #grid(columns: (1fr, 1fr), gutter: 16pt,
   card[
     #text(fill: plum, weight: "bold")[Open problems]
-    - *nonlinear* trainable filters — from a linear $theta$ to a small network;
+    - *nonlinear* trainable filters, from a linear $theta$ to a small network;
     - principled, data-driven *cover selection*: stability bounds data
-      perturbations at a fixed cover, so the *choice of cover* — the sensitivity
-      we just saw — is still unaccounted for. #cite-tag[bootstrap: Carrière–Michel–Oudot]
+      perturbations at a fixed cover, so the *choice of cover* (the sensitivity
+      we just saw) is still unaccounted for. #cite-tag[bootstrap: Carrière–Michel–Oudot]
   ],
   card(fill: rgb("#eaf4f3"))[
     #text(fill: vteal, weight: "bold")[JuliaTDA]

@@ -104,7 +104,7 @@ MAIN_NAMES = ["Luis Muriel", "Robert Lewandowski", "Karim Benzema", "Kylian Mbap
     "Casemiro", "Thiago Silva", "Trent Alexander-Arnold"]
 
 # Used only as the middle panel of the resolution triptych, whose other two
-# panels have no legend — so this one must not either, or the row goes lopsided.
+# panels have no legend: so this one must not either, or the row goes lopsided.
 # The legend is established on the labelled version of this same graph.
 save_fig("soccer_position.png", graph_plot(M;
     positions = pos, sizes = sz, categories = pos_idx,
@@ -114,6 +114,97 @@ save_fig("soccer_named.png", graph_plot(M;
     positions = pos, sizes = sz, categories = pos_idx,
     labels = label_nodes(M, player_names, MAIN_NAMES),
     figsize = (960, 600)))
+
+# A second, audience-facing reading of the same graph. Each tab labels a
+# contiguous part of the PC1 progression, so the names stay legible while all
+# 22 nodes receive an example across the three views. The helper verifies that
+# every displayed player really belongs to the numbered node. This explicit
+# node assignment matters because overlap can put the same pair in two adjacent
+# nodes even when a third player distinguishes the intended neighbourhood.
+function verified_player_labels(M, names, groups)
+    labels = Dict{Int,String}()
+    for (node, group) in groups
+        ids = map(group) do player
+            id = findfirst(==(player), names)
+            isnothing(id) && error("player not in dataset: $player")
+            id
+        end
+        all(id -> id in M.C[node], ids) ||
+            error("players do not all belong to node $node: $(join(group, ", "))")
+        short = short_name.(group)
+        body = length(short) > 2 ? join(short[1:2], " + ") * "\n" * join(short[3:end], " + ") :
+            join(short, " + ")
+        labels[node] = "N$node · " * body
+    end
+    return labels
+end
+
+ATTACK_EXAMPLES = Dict(
+    1 => ["Luis Muriel"],
+    2 => ["Robert Lewandowski", "Lionel Messi"],
+    3 => ["Kylian Mbappé", "Neymar", "Kevin De Bruyne"],
+    4 => ["Erling Haaland", "Harry Kane"],
+    5 => ["Cristiano Ronaldo", "Jadon Sancho"],
+    6 => ["Karim Benzema", "Mohamed Salah"],
+    7 => ["Son Heung-min", "Antoine Griezmann"],
+    8 => ["Jack Grealish", "Paulo Dybala"],
+)
+
+MIDFIELD_EXAMPLES = Dict(
+    9 => ["Mason Mount", "Yannick Carrasco"],
+    10 => ["İlkay Gündoğan", "Joshua Kimmich"],
+    11 => ["Toni Kroos", "Trent Alexander-Arnold"],
+    12 => ["Kai Havertz", "Achraf Hakimi"],
+    13 => ["João Cancelo", "Christian Eriksen"],
+    14 => ["Luka Modrić", "Paul Pogba"],
+    15 => ["Casemiro", "Frenkie de Jong"],
+    16 => ["Marco Verratti", "Bruno Guimarães"],
+    17 => ["Jorginho", "Idrissa Gana Gueye"],
+)
+
+DEFENSE_EXAMPLES = Dict(
+    18 => ["N'Golo Kanté", "Sergio Busquets", "Sergio Ramos"],
+    19 => ["Marquinhos", "Raphaël Varane", "Leonardo Bonucci"],
+    20 => ["Daniele Rugani", "Idrissa Gana Gueye"],
+    21 => ["Thiago Silva", "Rúben Dias", "Kalidou Koulibaly"],
+    22 => ["Kenny Tete"],
+)
+
+player_views = Dict(
+    "attack" => verified_player_labels(M, player_names, ATTACK_EXAMPLES),
+    "midfield" => verified_player_labels(M, player_names, MIDFIELD_EXAMPLES),
+    "defense" => verified_player_labels(M, player_names, DEFENSE_EXAMPLES),
+)
+@assert sort(vcat([collect(keys(player_views[tag])) for tag in ("attack", "midfield", "defense")]...)) ==
+    collect(eachindex(M.C))
+
+# The default label direction points away from a node's neighbours. Alternating
+# a few directions on the dense attacking and midfield chains prevents adjacent
+# callouts from colliding without changing the graph layout itself.
+player_label_directions = Dict(
+    "attack" => Dict(
+        1 => Point2f(-1, 1), 2 => Point2f(1, 1),
+        3 => Point2f(-1, -1), 4 => Point2f(-1, -0.2),
+        5 => Point2f(-1, 1), 6 => Point2f(1, -1),
+        7 => Point2f(1, -0.2), 8 => Point2f(-1, 0.5),
+    ),
+    "midfield" => Dict(
+        9 => Point2f(1, -1), 10 => Point2f(-1, 0.7),
+        11 => Point2f(1, -0.7), 12 => Point2f(-1, -0.4),
+        13 => Point2f(1, -0.2), 14 => Point2f(-1, 1),
+        15 => Point2f(1, 0.8), 16 => Point2f(-1, 0.4),
+        17 => Point2f(1, 0.8),
+    ),
+    "defense" => Dict{Int,Point2f}(),
+)
+
+for tag in ("attack", "midfield", "defense")
+    save_fig("soccer_players_$tag.png", graph_plot(M;
+        positions = pos, sizes = sz, categories = pos_idx,
+        labels = player_views[tag], label_directions = player_label_directions[tag],
+        label_fontsize = 20, show_legend = false,
+        figsize = (1100, 620)))
+end
 
 # The same nodes and the same layout, recoloured by each role.
 for (name, col, cmap) in (
@@ -138,7 +229,7 @@ save_fig("soccer_pca.png", metricspace_plot(EuclideanSpace(pc_scores),
 
 # ── 3. Resolution / parameter sensitivity ─────────────────────────────────────
 # Coarse end: the histogram-gap refiner collapses each slice to one cluster, so
-# the graph is a path — the role spectrum with no branches.
+# the graph is a path: the role spectrum with no branches.
 M_coarse = classical_mapper(space, R1Cover(pc1, Uniform(length = 12, expansion = 0.25)),
     FirstEmptyBin(num_bins = 10))
 save_fig("soccer_coarse.png", graph_plot(M_coarse;
@@ -146,7 +237,7 @@ save_fig("soccer_coarse.png", graph_plot(M_coarse;
     categories = first(dominant_position(M_coarse, pos_labels)),
     show_legend = false, figsize = (520, 430)))
 
-# Fine end: same filter, smaller DBSCAN radius — more, smaller branches.
+# Fine end: same filter, smaller DBSCAN radius: more, smaller branches.
 M_fine = classical_mapper(space, R1Cover(pc1, Uniform(length = 18, expansion = 0.5)),
     DBscan(radius = 2.0, min_cluster_size = 3))
 save_fig("soccer_fine.png", graph_plot(M_fine;
@@ -193,7 +284,7 @@ end
 
 # Level sets of "mean distance to everyone else" are shells around the dense
 # core, so extremes in *different* directions land in the same slice and DBSCAN
-# splits them apart. The starfish is partly made by this choice of filter — which
+# splits them apart. The starfish is partly made by this choice of filter: which
 # is the point of putting it next to the PC1 graph.
 M_ecc = classical_mapper(space, R1Cover(ecc, Uniform(length = 20, expansion = 0.5)),
     DBscan(radius = 2.0, min_cluster_size = 3))
@@ -252,7 +343,7 @@ for e in (0.4, 1.0, 1.4)
 end
 
 # ── 8. The nerve is a separate choice ────────────────────────────────────────
-# Same cover, same clusters, same nodes — only the rule for drawing an edge
+# Same cover, same clusters, same nodes: only the rule for drawing an edge
 # changes, so this isolates the nerve from everything else. Deliberately run on
 # the *same* two-lens graph as the hero figure above, so the slide prunes a web
 # the audience has already seen rather than introducing a new one.
@@ -365,12 +456,12 @@ open(joinpath(FIGDIR, "stats.txt"), "w") do io
     summarise(io, "COARSE  Uniform(12, 0.25) + FirstEmptyBin(10)", M_coarse)
     summarise(io, "FINE  Uniform(18, 0.5) + DBscan(2.0, min 3)", M_fine)
 
-    println(io, "\n\n╔══ FILTER COMPARISON — same cover Uniform(20, 0.6), same DBscan(2.0, min 3) ══╗")
+    println(io, "\n\n╔══ FILTER COMPARISON: same cover Uniform(20, 0.6), same DBscan(2.0, min 3) ══╗")
     for tag in ("pc1", "ecc", "dens", "attack")
         summarise(io, "filter = $tag", zoo[tag])
     end
 
-    println(io, "\n\n╔══ CLUSTERING COMPARISON — same PC1 filter + Uniform(20, 0.6) cover ══╗")
+    println(io, "\n\n╔══ CLUSTERING COMPARISON: same PC1 filter + Uniform(20, 0.6) cover ══╗")
     for tag in ("firstempty", "dbscan", "kmeans")
         summarise(io, "refiner = $tag", clusterers[tag])
     end

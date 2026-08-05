@@ -50,6 +50,12 @@ topological objective. A controlled example shows a learned direction recovering
 the four legs of a table when principal component analysis sees only its broad
 surface.
 
+A historical gallery uses original figures from eight landmark applications:
+RNA folding pathways, two breast-cancer studies, congressional voting, NBA
+playing roles, type-2 diabetes stratification, neurotrauma outcomes, and
+single-cell differentiation. Each slide states the question, the published
+finding, and a direct link to the source paper.
+
 ## The main case study: the shape of football
 
 The second half of the talk applies Mapper to 1,513 outfield players from the
@@ -72,7 +78,7 @@ Mapper is not a machine that reveals the one true shape of a dataset. It is a
 way to ask a topological question of the data, and its answer depends on how that
 question is posed.
 
-> **The picture is an argument—never the conclusion.**
+> **The picture is an argument, never the conclusion.**
 
 The goal of the talk is therefore both constructive and critical: to explain
 why Mapper works, show what it can reveal, and make its modelling choices

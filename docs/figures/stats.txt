@@ -68,7 +68,7 @@ PCA        = PC1 45.5% of variance, PC2 23.3%
   nodes with a tied dominant position=2
 
 
-╔══ FILTER COMPARISON — same cover Uniform(20, 0.6), same DBscan(2.0, min 3) ══╗
+╔══ FILTER COMPARISON: same cover Uniform(20, 0.6), same DBscan(2.0, min 3) ══╗
 
 ══ filter = pc1 ══
   nodes=49 edges=68 components=6 cycle_rank=25
@@ -99,7 +99,7 @@ PCA        = PC1 45.5% of variance, PC2 23.3%
   nodes with a tied dominant position=4
 
 
-╔══ CLUSTERING COMPARISON — same PC1 filter + Uniform(20, 0.6) cover ══╗
+╔══ CLUSTERING COMPARISON: same PC1 filter + Uniform(20, 0.6) cover ══╗
 
 ══ refiner = firstempty ══
   nodes=20 edges=16 components=4 cycle_rank=0

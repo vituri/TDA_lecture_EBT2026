@@ -106,7 +106,7 @@ nerve=Jaccard(0.05)                    nodes=  65 edges=  107 comp= 11 loops=  5
 nerve=Jaccard(0.1)                     nodes=  65 edges=   81 comp= 14 loops=  30  tips= 10 branch= 35 iso= 11  maxnode= 647 med=  7.0  purity=0.708
 nerve=Pct(0.15)                        nodes=  65 edges=  164 comp=  6 loops= 105  tips=  4 branch= 57 iso=  4  maxnode= 647 med=  7.0  purity=0.708
 
-══ expansion sweep (pc1, 14 slices, DBscan(2.5,3)) — layering breaks at e>1 ══
+══ expansion sweep (pc1, 14 slices, DBscan(2.5,3)): layering breaks at e>1 ══
 pc1  U(14, 0.2)                        nodes=  25 edges=   28 comp=  4 loops=   7  tips=  7 branch= 12 iso=  3  maxnode= 405 med= 18.0  purity=0.689
 pc1  U(14, 0.4)                        nodes=  26 edges=   29 comp=  4 loops=   7  tips=  8 branch= 13 iso=  3  maxnode= 452 med= 17.5  purity=0.696
 pc1  U(14, 0.8)                        nodes=  26 edges=   32 comp=  2 loops=   8  tips=  7 branch= 13 iso=  1  maxnode= 517 med= 22.0  purity=0.684

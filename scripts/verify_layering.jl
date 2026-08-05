@@ -4,7 +4,7 @@
 #     julia --project=. scripts/verify_layering.jl
 #
 # The claim. With a 1-D filter, every Mapper node is a cluster inside exactly one
-# slice, and the clusters within a slice are disjoint — that is structural rather
+# slice, and the clusters within a slice are disjoint: that is structural rather
 # than a property of any one refiner: `Refiners.refine_cover` asks the refiner for
 # one label per point and then forms `ids[findall(==(cl), labels)]`, so each point
 # of a slice lands in exactly one cluster of it. Hence no edge ever joins two
@@ -24,8 +24,8 @@
 # the claim survives only because no data point sits exactly there. The slides say
 # `expansion < 1` and do not lean on that coincidence.
 #
-# With a 2-D grid cover the same argument targets the *king graph* on Z² — cells
-# (i,j) and (i+1,j+1) overlap — which has triangles. So a 2-lens Mapper graph is
+# With a 2-D grid cover the same argument targets the *king graph* on Z²: cells
+# (i,j) and (i+1,j+1) overlap: which has triangles. So a 2-lens Mapper graph is
 # not forced to be bipartite, and in practice is not.
 #
 # This file asserts all of that, so the slide cannot quietly go stale.

@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 520" role="img" aria-labelledby="title description">
+  <title id="title">Three clustering methods on the same noisy two-moons dataset</title>
+  <description id="description">K-means cuts the two curved moons with a straight nearest-centre boundary. Single linkage joins both moons through a sparse chain of points. DBSCAN follows the two dense curved regions and marks the sparse bridge as noise.</description>
+
+  <defs>
+    <clipPath id="left-half" clipPathUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="205" height="270"/>
+    </clipPath>
+    <clipPath id="right-half" clipPathUnits="userSpaceOnUse">
+      <rect x="205" y="0" width="195" height="270"/>
+    </clipPath>
+
+    <g id="upper-moon" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round">
+      <path d="M35 177 C43 91 106 38 177 35 C245 32 291 87 302 164" stroke-dasharray="0.1 12.6"/>
+      <path d="M38 169 C51 88 108 45 178 42 C241 40 285 91 296 169" stroke-dasharray="0.1 13.3" stroke-dashoffset="5" opacity=".88"/>
+      <path d="M32 173 C43 96 104 33 181 31 C251 31 296 91 305 170" stroke-dasharray="0.1 18.4" stroke-dashoffset="9" opacity=".72"/>
+    </g>
+
+    <g id="lower-moon" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round">
+      <path d="M112 96 C120 177 182 225 252 228 C323 230 373 172 381 91" stroke-dasharray="0.1 12.6"/>
+      <path d="M119 92 C124 171 184 218 251 220 C319 222 368 169 376 87" stroke-dasharray="0.1 13.3" stroke-dashoffset="5" opacity=".88"/>
+      <path d="M108 99 C113 183 180 231 255 233 C329 233 378 174 385 94" stroke-dasharray="0.1 18.4" stroke-dashoffset="9" opacity=".72"/>
+    </g>
+
+    <g id="sparse-bridge" fill="currentColor">
+      <circle cx="307" cy="171" r="4.2"/>
+      <circle cx="316" cy="177" r="4.2"/>
+      <circle cx="326" cy="183" r="4.2"/>
+      <circle cx="336" cy="189" r="4.2"/>
+    </g>
+
+    <g id="all-data">
+      <use href="#upper-moon"/>
+      <use href="#lower-moon"/>
+      <use href="#sparse-bridge"/>
+    </g>
+  </defs>
+
+  <style>
+    .panel { fill: #181818; stroke: #3a3a3a; stroke-width: 2; }
+    .method { fill: #fafafa; font: 700 28px Arial, sans-serif; }
+    .question { fill: #ff9b3d; font: 700 15px Arial, sans-serif; letter-spacing: 1.8px; text-transform: uppercase; }
+    .caption { fill: #d9d9d9; font: 21px Arial, sans-serif; }
+    .detail { fill: #949494; font: 17px Arial, sans-serif; }
+    .divider { stroke: #333; stroke-width: 1.5; }
+  </style>
+
+  <!-- k-means -->
+  <g transform="translate(20 10)">
+    <rect class="panel" width="440" height="500" rx="18"/>
+    <text class="method" x="24" y="43">k-means · k = 2</text>
+    <text class="question" x="24" y="72">Which centre is nearest?</text>
+    <line class="divider" x1="24" y1="90" x2="416" y2="90"/>
+    <g transform="translate(20 105)">
+      <use href="#all-data" style="color:#ff7a18" clip-path="url(#left-half)"/>
+      <use href="#all-data" style="color:#47b9ad" clip-path="url(#right-half)"/>
+      <line x1="205" y1="15" x2="205" y2="246" stroke="#fafafa" stroke-width="2" stroke-dasharray="7 8" opacity=".55"/>
+      <circle cx="113" cy="137" r="9" fill="#ff7a18" stroke="#fafafa" stroke-width="3"/>
+      <circle cx="292" cy="144" r="9" fill="#47b9ad" stroke="#fafafa" stroke-width="3"/>
+    </g>
+    <text class="caption" x="24" y="424">A straight boundary cuts</text>
+    <text class="caption" x="24" y="451">through both crescents.</text>
+    <text class="detail" x="24" y="480">Compactness wins; shape is ignored.</text>
+  </g>
+
+  <!-- single linkage -->
+  <g transform="translate(500 10)">
+    <rect class="panel" width="440" height="500" rx="18"/>
+    <text class="method" x="24" y="43">Single linkage</text>
+    <text class="question" x="24" y="72">Can I get there in short hops?</text>
+    <line class="divider" x1="24" y1="90" x2="416" y2="90"/>
+    <g transform="translate(20 105)">
+      <path d="M297 165 L307 171 L316 177 L326 183 L336 189 L345 195" fill="none" stroke="#ff7a18" stroke-width="2.5" opacity=".7"/>
+      <use href="#all-data" style="color:#ff7a18"/>
+    </g>
+    <text class="caption" x="24" y="424">A sparse chain joins the</text>
+    <text class="caption" x="24" y="451">moons into one cluster.</text>
+    <text class="detail" x="24" y="480">One bridge can trigger “chaining”.</text>
+  </g>
+
+  <!-- DBSCAN -->
+  <g transform="translate(980 10)">
+    <rect class="panel" width="440" height="500" rx="18"/>
+    <text class="method" x="24" y="43">DBSCAN</text>
+    <text class="question" x="24" y="72">Where are the dense paths?</text>
+    <line class="divider" x1="24" y1="90" x2="416" y2="90"/>
+    <g transform="translate(20 105)">
+      <use href="#upper-moon" style="color:#ff7a18"/>
+      <use href="#lower-moon" style="color:#47b9ad"/>
+      <use href="#sparse-bridge" style="color:#747474"/>
+      <g stroke="#d0d0d0" stroke-width="1.8" opacity=".82">
+        <path d="M303 167 l8 8 M311 167 l-8 8"/>
+        <path d="M312 173 l8 8 M320 173 l-8 8"/>
+        <path d="M322 179 l8 8 M330 179 l-8 8"/>
+        <path d="M332 185 l8 8 M340 185 l-8 8"/>
+      </g>
+    </g>
+    <text class="caption" x="24" y="424">Dense curves stay separate;</text>
+    <text class="caption" x="24" y="451">the sparse bridge is noise.</text>
+    <text class="detail" x="24" y="480">Shape emerges from local density.</text>
+  </g>
+</svg>

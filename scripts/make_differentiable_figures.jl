@@ -343,7 +343,7 @@ top_weights = [(feature = String(feature_cols[i]), weight = football_direction[i
     for i in top_weight_ids]
 
 open(joinpath(DIFF_FIGDIR, "differentiable_stats.txt"), "w") do io
-    println(io, "ROTATED TABLE — isometric R3 -> R10 embedding")
+    println(io, "ROTATED TABLE: isometric R3 -> R10 embedding")
     println(io, "hero seed = 20260802")
     println(io, "learned |cos(theta, hidden normal)| = ", table_result.alignment)
     println(io, "PCA metrics = ", table_result.pca_metrics)
@@ -354,7 +354,7 @@ open(joinpath(DIFF_FIGDIR, "differentiable_stats.txt"), "w") do io
     println(io, "rotation successes (alignment > 0.95) = ", rotation_successes,
         " / ", length(rotation_alignments))
 
-    println(io, "\nFOOTBALL — labels withheld during optimization")
+    println(io, "\nFOOTBALL: labels withheld during optimization")
     println(io, "features = ", length(feature_cols))
     println(io, "PCA metrics = ", football_pca_metrics)
     println(io, "learned metrics = ", football_learned_metrics)

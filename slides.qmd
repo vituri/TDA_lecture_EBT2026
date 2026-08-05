@@ -10,7 +10,7 @@ title-slide-attributes:
   class: "full-bleed-title"
 ---
 
-## The whole talk in one sentence {.section-slide background-color="#1a1a1a"}
+## What is the Mapper? {.section-slide background-color="#1a1a1a" data-breadcrumb="Mapper|Foundations"}
 
 ::: {.thesis}
 Mapper is what is left of the **Reeb graph** once we make it computable:
@@ -24,7 +24,7 @@ swap *connected components of fibres* for **cover + clustering**.
 This is the thesis. Everything that follows should make one part of this sentence inevitable.
 :::
 
-## First, watch the topology change
+## The Reeb graph alive {data-breadcrumb="Mapper|Continuous model|Reeb graph" data-example="TORUS · CONTINUOUS"}
 
 ```{=html}
 <div id="torus-sweep" class="interactive-shell">
@@ -97,7 +97,7 @@ This is the thesis. Everything that follows should make one part of this sentenc
     <input type="range" min="0" max="100" value="4" step="1" aria-label="Height of the torus sweep">
     <span class="range-readout" data-range-readout>height 4%</span>
   </div>
-  <div class="keyboard-hint">Drag the slider—or use ↑ and ↓ while presenting.</div>
+  <div class="keyboard-hint">Drag the slider, or use ↑ and ↓ while presenting.</div>
 </div>
 ```
 
@@ -105,13 +105,15 @@ This is the thesis. Everything that follows should make one part of this sentenc
 Do not define the Reeb graph first. Scrub upward and ask the room to count components. The loop on the right is the quotient being drawn in real time.
 :::
 
-## The Reeb graph
+## The Reeb graph {data-breadcrumb="Mapper|Continuous model|Reeb graph" data-example="TORUS · CONTINUOUS"}
 
 ::: {.columns .v-center .gap-lg}
 ::: {.column width="58%"}
-Given a topological space $X$ and a continuous $f:X\to\mathbb R$,
+Given a topological space $X$ and a continuous $f:X\to\mathbb R$, define the relation
 
-$$p\sim q \iff p,q\text{ lie in the same connected component of }f^{-1}(c).$$
+$$p\sim q \iff$$
+
+$$p,q\text{ lie in the same connected component of }f^{-1}(c).$$
 
 The Reeb graph is the quotient $X/{\sim}$.
 
@@ -137,7 +139,7 @@ The torus and its height function leave behind **one loop**.
 :::
 :::
 
-## Why we cannot just compute it
+## Why we cannot just compute it {data-breadcrumb="Mapper|Continuous → discrete|The obstruction" data-example="FINITE SAMPLES"}
 
 <div class="eyebrow">The real-world obstruction</div>
 
@@ -158,10 +160,10 @@ $f^{-1}(c)$ is empty for almost every $c$.
 :::
 
 ::: {.callout-line .fragment style="margin-top:1em"}
-The computable fix is precise: replace **points by overlapping intervals**, and **connected components by clustering**.
+The trick: replace **points by overlapping intervals**, and **connected components by clustering**.
 :::
 
-## From Reeb to Mapper
+## From Reeb to Mapper {data-breadcrumb="Mapper|Construction|Pullback cover + nerve" data-example="LOOP · FINITE SAMPLE"}
 
 ```{=html}
 <figure class="mapper-construction">
@@ -176,9 +178,9 @@ The computable fix is precise: replace **points by overlapping intervals**, and 
 Trace the same data from left to right. Emphasize that the white overlap points create the graph edges, while clustering replaces connected components.
 :::
 
-## A dictionary between worlds
+## A dictionary between worlds {data-breadcrumb="Mapper|Construction|Continuous → discrete"}
 
-| Reeb — continuous |  | Mapper — discrete |
+| Reeb (continuous) |  | Mapper (discrete) |
 |---|:---:|---|
 | topological space $X$ | ⟶ | finite metric space $(X,d)$ |
 | $f:X\to\mathbb R$ | ⟶ | any filter on the sample |
@@ -189,9 +191,9 @@ Trace the same data from left to right. Emphasize that the white overlap points 
 filter $f$ &nbsp; + &nbsp; cover $\mathcal U$ &nbsp; + &nbsp; clustering rule
 :::
 
-## The hinge: the nerve lemma
+## The hinge: the nerve lemma {data-breadcrumb="Mapper|Construction|Nerve"}
 
-> If a cover is **good**—every nonempty finite intersection is contractible—its nerve is homotopy-equivalent to the union.
+> If a cover is **good**, meaning every nonempty finite intersection is contractible, its nerve is homotopy-equivalent to the union.
 
 ::: {.columns .v-center .gap-lg style="margin-top:.8em"}
 ::: {.column width="55%"}
@@ -217,7 +219,7 @@ Everything that follows is the nerve of a cover. **Only the cover changes.**
 :::
 :::
 
-## The torus, now from a finite sample
+## The torus, now from a finite sample {data-breadcrumb="Mapper|Construction|Discrete Mapper" data-example="TORUS · FINITE SAMPLE"}
 
 ::: {.columns .v-center .gap-lg}
 ::: {.column width="48%"}
@@ -239,7 +241,7 @@ Everything that follows is the nerve of a cover. **Only the cover changes.**
 :::
 :::
 
-## One point cloud, different questions
+## One point cloud, different questions {data-breadcrumb="Mapper|Modelling choices|Filter" data-example="FLAMINGO · SAME SAMPLE"}
 
 ::: {.filter-comparison}
 ::: {.filter-panel .cloud}
@@ -267,7 +269,7 @@ Horizontal slices separate body parts that happen to share a height: **19 nodes 
 The source cloud has 26,907 points; all four examples use the same deterministic farthest-point sample of 2,400. In the source coordinates y is the physical vertical axis. Height asks which parts of the animal occupy the same horizontal band.
 :::
 
-## A landmark turns the filter into a direction
+## A landmark turns the filter into a direction {data-breadcrumb="Mapper|Modelling choices|Filter" data-example="FLAMINGO · SAME SAMPLE"}
 
 ::: {.filter-comparison}
 ::: {.filter-panel .cloud}
@@ -295,7 +297,7 @@ The beak supplies an origin, so the graph follows anatomical progress from head 
 The beak landmark is selected reproducibly as the extreme point on the flamingo's longitudinal axis. The lens now has semantic direction: distance travelled away from the head.
 :::
 
-## Eccentricity sees centre versus periphery
+## Eccentricity sees centre versus periphery {data-breadcrumb="Mapper|Modelling choices|Filter" data-example="FLAMINGO · SAME SAMPLE"}
 
 ::: {.filter-comparison}
 ::: {.filter-panel .cloud}
@@ -323,7 +325,7 @@ Equal-distance shells mix remote body parts, then clustering splits them apart: 
 Eccentricity is rotation-invariant, unlike height, but it groups points by centrality. The richer branching is partly authored by that choice; it is not an intrinsic picture of the flamingo independent of a lens.
 :::
 
-## Geodesic eccentricity follows the surface
+## Geodesic eccentricity follows the surface {data-breadcrumb="Mapper|Modelling choices|Filter + metric" data-example="FLAMINGO · SAME SAMPLE"}
 
 ::: {.filter-comparison}
 ::: {.filter-panel .cloud}
@@ -342,7 +344,7 @@ Eccentricity is rotation-invariant, unlike height, but it groups points by centr
 :::
 
 ::: {.callout-line}
-The two foot flares now terminate separately—**0 mixed-foot nodes**. Their closest samples are **0.036 apart Euclidean but 1.564 geodesic (43×)**: **39 nodes · 38 edges · 1 component**.
+The two foot flares now terminate separately: **0 mixed-foot nodes**. Their closest samples are **0.036 apart Euclidean but 1.564 geodesic (43×)**: **39 nodes · 38 edges · 1 component**.
 :::
 
 <div class="comparison-footer">3-NN graph · 4,321 edges · geodesic DBSCAN · 0 mixed-foot nodes</div>
@@ -351,7 +353,7 @@ The two foot flares now terminate separately—**0 mixed-foot nodes**. Their clo
 Build the undirected 3-nearest-neighbour graph, weight every edge by Euclidean length, and run Dijkstra from every point. The filter value is each point's mean shortest-path distance to the full sample. The same distance matrix is used by DBSCAN inside each pullback-cover element; using an intrinsic lens with ambient Euclidean clustering would still glue the feet. The generator identifies the two feet geometrically and asserts both zero direct cross-foot graph edges and zero Mapper nodes containing points from both feet. All graph edges are drawn in the rotating panel.
 :::
 
-## When “statistical” is honest
+## When “statistical” is honest {data-breadcrumb="Mapper|Guarantees|Stability + inference"}
 
 Mapper is deterministic once its parameters are fixed. Statistics enters in three different places.
 
@@ -359,7 +361,7 @@ Mapper is deterministic once its parameters are fixed. Statistics enters in thre
 ::: {.card .fragment}
 <span class="chip">sample</span>
 
-Run on a sample—not on $X$ itself.
+Run on a sample, not on $X$ itself.
 :::
 
 ::: {.card .fragment}
@@ -380,10 +382,10 @@ Parameter selection and bootstrap uncertainty.
 :::
 
 ::: {.callout-line .fragment style="margin-top:1em"}
-Structure and stability theory says small perturbations of the data move the 1-D Mapper only a little—at a **fixed cover**.
+Structure and stability theory says small perturbations of the data move the 1-D Mapper only a little when the **cover is fixed**.
 :::
 
-## Two moves, many Mappers
+## Two moves, many Mappers {data-breadcrumb="Mapper|Variants|Cover + nerve"}
 
 ::: {.card-grid .two}
 ::: {.card .tint-plum}
@@ -412,13 +414,17 @@ Structure and stability theory says small perturbations of the data move the 1-D
 <div class="card tint-yellow fragment"><span class="chip yellow">learn</span><p class="small">Optimise the filter itself.</p></div>
 :::
 
-## Differentiable Mapper learns the filter
+## Differentiable Mapper learns the filter {data-breadcrumb="Mapper|Modelling choices|Learn the filter"}
 
 ::: {.columns .v-center .gap-lg}
 ::: {.column width="54%"}
 <div class="eyebrow">Oulhaj · Carrière · Michel, ICML 2024</div>
 
-**Reeb fixes** the filter. **Mapper chooses** it. Differentiable Mapper **learns** it.
+**Reeb fixes** the filter. 
+
+**Mapper chooses** it. 
+
+Differentiable Mapper **learns** it.
 
 ::: {.fragment}
 
@@ -449,7 +455,7 @@ Extended persistence makes the objective loop-aware: ordinary $H_0$ sees branche
 :::
 :::
 
-## When variance points the wrong way
+## When variance points the wrong way {data-breadcrumb="Mapper|Modelling choices|Learn the filter" data-example="TABLE · CONTROLLED BENCHMARK"}
 
 <div class="eyebrow">Controlled benchmark · a table rotated isometrically into $\mathbb R^{10}$</div>
 
@@ -478,7 +484,225 @@ The learned direction recovers the hidden table normal: $|\cos(\theta,\theta^*)|
 The table is generated in three dimensions and embedded by a random semi-orthogonal matrix into ten dimensions, so all distances are preserved but no coordinate is privileged. The filter is normalized to prevent scale from gaming persistence. Four PCA-sign restarts are ranked only by the topological objective. PC1 sees variance along the tabletop; the learned direction exposes the four legs as persistent branches.
 :::
 
-## The branches carry the story {.section-slide background-color="#1a1a1a"}
+## Mapper in the wild {.section-slide background-color="#1a1a1a" data-breadcrumb="Mapper|Landmark applications"}
+
+<div class="eyebrow">Eight published case studies · 2009–2017</div>
+
+::: {.thesis}
+The famous Mapper pictures did more than compress data.
+
+They turned **branches, paths, and repeated shapes** into scientific hypotheses.
+:::
+
+<div class="application-years" aria-label="Years represented in the following case studies">
+  <span>2009</span><span>2011</span><span>2013</span><span>2015</span><span>2017</span>
+</div>
+
+::: {.notes}
+This is a deliberately historical sequence. Each next slide uses an original figure from the cited paper and isolates the scientific claim that made the example memorable.
+:::
+
+## One RNA hairpin, two routes home {data-breadcrumb="Mapper|Landmark applications|Molecular dynamics" data-example="RNA FOLDING · 2009"}
+
+```{=html}
+<div class="application-layout balanced">
+  <figure class="paper-figure">
+    <img src="figures/applications/yao-2009-fig3.png" alt="Mapper graphs and representative contact maps for RNA hairpin unfolding and folding; unfolding follows one main path while folding branches into two paths." />
+    <figcaption>Original Fig. 3 · unfolding above, folding below</figcaption>
+  </figure>
+  <div class="paper-copy">
+    <div class="paper-meta">Yao et al. · Journal of Chemical Physics · 2009</div>
+    <p class="paper-question">Can rare intermediate conformations survive the compression of a molecular simulation?</p>
+    <div class="paper-finding">
+      <span>The finding</span>
+      <p><strong>Unfolding followed one dominant path; folding followed two.</strong> The two branches passed through different base-pair intermediates.</p>
+    </div>
+    <p class="paper-detail">A conditional-density filter brought low-population states forward instead of letting the dense folded and unfolded states absorb them.</p>
+    <a class="paper-citation" href="https://doi.org/10.1063/1.3103496">Yao et al., doi:10.1063/1.3103496 · Fig. 3 ↗</a>
+  </div>
+</div>
+```
+
+::: {.notes}
+Read the colored nodes from red, high density, to blue, low density. The bottom Mapper graph branches at the intermediate states: one route forms the closing base pair first, the other the end base pair. The authors also identified a small reptation branch. This was an early demonstration that Mapper could expose rare transition structure in a highly heterogeneous simulation.
+:::
+
+## A branch became a breast-cancer subgroup {data-breadcrumb="Mapper|Landmark applications|Cancer genomics" data-example="BREAST CANCER · 2011"}
+
+```{=html}
+<div class="application-layout landscape">
+  <figure class="paper-figure">
+    <img src="figures/applications/nicolau-2011-fig3.png" alt="Progression Analysis of Disease Mapper graph of breast tumors with Normal-like, basal-like, ER-negative, ER-positive, and c-MYB-positive regions labelled." />
+    <figcaption>Original Fig. 3 · NKI breast-tumor cohort</figcaption>
+  </figure>
+  <div class="paper-copy">
+    <div class="paper-meta">Nicolau · Levine · Carlsson · PNAS · 2011</div>
+    <p class="paper-question">Does gene expression vary through connected disease progressions rather than isolated clusters?</p>
+    <div class="paper-finding">
+      <span>The finding</span>
+      <p>A dense <strong>c-MYB⁺, ER⁺/HER2⁻ arm</strong> emerged between sparse regions, an arrangement that ordinary clustering scattered across groups.</p>
+    </div>
+    <p class="paper-detail">The c-MYB⁺ group had 100% observed overall survival in the discovery cohort and a distinct molecular signature; the subgroup was then tested in an independent cohort.</p>
+    <a class="paper-citation" href="https://doi.org/10.1073/pnas.1102826108">Nicolau et al., doi:10.1073/pnas.1102826108 · Fig. 3 ↗</a>
+  </div>
+</div>
+```
+
+::: {.notes}
+The filter measures deviation from a healthy-state model: blue is close to normal and red is far from it. Emphasize the geometry, not only the colors. The c-MYB-positive tumors form a dense segment of the ER-positive arm bracketed by sparse regions. Survival was not used to construct this graph; it was examined after the subgroup was found.
+:::
+
+## The same survivor arm appeared twice {data-breadcrumb="Mapper|Landmark applications|Cancer replication" data-example="BREAST CANCER · 2013"}
+
+```{=html}
+<div class="application-layout landscape">
+  <figure class="paper-figure">
+    <img src="figures/applications/lum-2013-fig2.jpg" alt="Four Mapper networks from the NKI and GSE2034 breast cancer cohorts, separated by survival or relapse and colored by ESR1 or chemokine pathway expression." />
+    <figcaption>Original Fig. 2 · two cohorts, two molecular colorings</figcaption>
+  </figure>
+  <div class="paper-copy">
+    <div class="paper-meta">Lum et al. · Scientific Reports · 2013</div>
+    <p class="paper-question">Can a topological patient subgroup recur across different microarray platforms?</p>
+    <div class="paper-finding">
+      <span>The finding</span>
+      <p>Both cohorts contained a comparable <strong>Y-shaped survivor / non-relapse structure</strong> with a low-ESR1 arm.</p>
+    </div>
+    <p class="paper-detail">That unusual low-ESR1, good-outcome arm also showed elevated chemokine-pathway expression, turning visual correspondence into a biological lead.</p>
+    <a class="paper-citation" href="https://doi.org/10.1038/srep01236">Lum et al., doi:10.1038/srep01236 · Fig. 2 ↗</a>
+  </div>
+</div>
+```
+
+::: {.notes}
+Panels A and B use the NKI cohort; C and D use GSE2034. The top components are death or relapse and the lower Y-shaped components are survival or no relapse. The network used outcome as one filter, so describe this as supervised stratification and cross-cohort correspondence, not as an outcome-blind discovery.
+:::
+
+## Voting records acquired a political geometry {data-breadcrumb="Mapper|Landmark applications|Politics" data-example="U.S. HOUSE · 1990–2011"}
+
+```{=html}
+<div class="application-layout landscape">
+  <figure class="paper-figure">
+    <img src="figures/applications/lum-2013-fig4.jpg" alt="House fragmentation index from 1990 to 2011 above Mapper networks of representatives in 2009, 2010, and 2011 colored red for Republicans and blue for Democrats." />
+    <figcaption>Original Fig. 4 · annual fragmentation and three House networks</figcaption>
+  </figure>
+  <div class="paper-copy">
+    <div class="paper-meta">Lum et al. · Scientific Reports · 2013</div>
+    <p class="paper-question">What changes when representatives are compared by every vote rather than by party label?</p>
+    <div class="paper-finding">
+      <span>The finding</span>
+      <p>The maps exposed changing <strong>within-party fragmentation</strong>, with especially high fragmentation in 2008 and 2010.</p>
+    </div>
+    <p class="paper-detail">A persistent cross-party “Central Group” contained members whose voting behavior connected otherwise separated partisan regions.</p>
+    <a class="paper-citation" href="https://doi.org/10.1038/srep01236">Lum et al., doi:10.1038/srep01236 · Fig. 4 ↗</a>
+  </div>
+</div>
+```
+
+::: {.notes}
+The line chart counts connected components, excluding singletons, for each party and year. The three lower panels show the actual topology for 2009–2011. PCA recovered the obvious party split but did not expose the same fragmentation. Avoid implying causality from contemporary events; the paper offers them as possible interpretations.
+:::
+
+## Five basketball positions became thirteen roles {data-breadcrumb="Mapper|Landmark applications|Sports analytics" data-example="NBA · 2010–11"}
+
+```{=html}
+<div class="application-layout landscape">
+  <figure class="paper-figure">
+    <img src="figures/applications/lum-2013-fig5.jpg" alt="Low- and high-resolution Mapper networks of 452 NBA players, colored by points per game and annotated with performance roles such as scoring guard, offensive point guard, paint protector, and all-NBA team." />
+    <figcaption>Original Fig. 5 · low resolution left, high resolution right</figcaption>
+  </figure>
+  <div class="paper-copy">
+    <div class="paper-meta">Alagappan 2012 · Lum et al. 2013</div>
+    <p class="paper-question">What if a player's position is inferred from performance, not height or a roster label?</p>
+    <div class="paper-finding">
+      <span>The finding</span>
+      <p>Seven per-minute statistics for 452 players yielded <strong>thirteen connected playing styles</strong>, not the traditional five positions.</p>
+    </div>
+    <p class="paper-detail">Offensive and defensive point guards separated; “paint protectors,” scoring bigs, and small elite-player islands became visible.</p>
+    <a class="paper-citation" href="https://doi.org/10.1038/srep01236">Lum et al., doi:10.1038/srep01236 · Fig. 5 ↗</a>
+  </div>
+</div>
+```
+
+::: {.notes}
+This is the historical bridge to the football study. The network uses points, rebounds, assists, turnovers, steals, blocks, and fouls per minute. The two panels also make multiresolution concrete: a coarser cover shows broad groups, while a finer cover reveals the thirteen-role vocabulary popularized by Alagappan's Sloan presentation.
+:::
+
+## Type-2 diabetes became three patient profiles {data-breadcrumb="Mapper|Landmark applications|Precision medicine" data-example="T2D · 11,210 PATIENTS"}
+
+```{=html}
+<div class="application-layout portrait">
+  <figure class="paper-figure">
+    <img src="figures/applications/li-2015-fig1.jpg" alt="Two patient similarity networks: the full 11,210-patient cohort and a type-2 diabetes network with three subtypes labelled around a large loop." />
+    <figcaption>Original Fig. 1 · all patients above, T2D subtypes below</figcaption>
+  </figure>
+  <div class="paper-copy">
+    <div class="paper-meta">Li et al. · Science Translational Medicine · 2015</div>
+    <p class="paper-question">Can one diagnosis hide several clinically and genetically distinct populations?</p>
+    <div class="paper-finding">
+      <span>The finding</span>
+      <p>Among 2,551 people with T2D, Mapper separated <strong>three patient subtypes</strong> with different comorbidity patterns.</p>
+    </div>
+    <p class="paper-detail">Subtype 1 emphasized nephropathy / retinopathy; subtype 2 cancer / cardiovascular disease; subtype 3 cardiovascular / neurological disease and other conditions. Genotypes, which were not used to build the graph, showed subtype-specific associations.</p>
+    <a class="paper-citation" href="https://doi.org/10.1126/scitranslmed.aaa9364">Li et al., doi:10.1126/scitranslmed.aaa9364 · Fig. 1 ↗</a>
+  </div>
+</div>
+```
+
+::: {.notes}
+The full network used more than 500 EMR-derived variables for 11,210 patients. The lower network isolates the T2D population. The strongest validation move is independence: genotype data did not determine the topology, yet subtype-specific variants and pathways aligned with the clinical differences. Present these as study-defined subtypes, not today's clinical standard of care.
+:::
+
+## A 20-year-old trial contained a hidden predictor {data-breadcrumb="Mapper|Landmark applications|Neurotrauma" data-example="SPINAL CORD INJURY · 2015"}
+
+```{=html}
+<div class="application-layout landscape">
+  <figure class="paper-figure">
+    <img src="figures/applications/nielson-2015-fig5.jpg" alt="Two Mapper analyses of spinal cord injury trials linking perioperative hypertension to poorer locomotor recovery in discovery and validation cohorts." />
+    <figcaption>Original Fig. 5 · discovery cohort left, validation cohort right</figcaption>
+  </figure>
+  <div class="paper-copy">
+    <div class="paper-meta">Nielson et al. · Nature Communications · 2015</div>
+    <p class="paper-question">Can connected outcome profiles reveal a factor that conventional trial summaries missed?</p>
+    <div class="paper-finding">
+      <span>The finding</span>
+      <p>Within matched spinal-cord injuries, the poor-recovery branch was associated with <strong>perioperative hypertension</strong>.</p>
+    </div>
+    <p class="paper-detail">The relationship was recovered in a separate cohort from the same historical trial, then tested explicitly with conventional statistics.</p>
+    <a class="paper-citation" href="https://doi.org/10.1038/ncomms9581">Nielson et al., doi:10.1038/ncomms9581 · Fig. 5 ↗</a>
+  </div>
+</div>
+```
+
+::: {.notes}
+The Mapper graph guided the authors to subjects with the same targeted injury but very different locomotor recovery. A variable query implicated spikes in mean arterial pressure. They then cross-validated in a separate 1994–1995 cohort and followed with formal hypothesis testing. This is a useful example of Mapper as a hypothesis generator embedded in a validation workflow.
+:::
+
+## Cell fate became a branching trajectory {data-breadcrumb="Mapper|Landmark applications|Single-cell biology" data-example="scRNA-SEQ · 2017"}
+
+```{=html}
+<div class="application-layout balanced">
+  <figure class="paper-figure">
+    <img src="figures/applications/rizvi-2017-fig3.jpg" alt="Single-cell topological representation of embryonic stem cell differentiation into motor neurons, colored by experimental day and marker genes and paired with microscopy images." />
+    <figcaption>Original Fig. 3 · motor-neuron differentiation</figcaption>
+  </figure>
+  <div class="paper-copy">
+    <div class="paper-meta">Rizvi et al. · Nature Biotechnology · 2017</div>
+    <p class="paper-question">How do asynchronously differentiating cells move through transient states?</p>
+    <div class="paper-finding">
+      <span>The finding</span>
+      <p>scTDA recovered a continuous developmental path with <strong>four transient identities</strong>: pluripotent, precursor, progenitor, and differentiated.</p>
+    </div>
+    <p class="paper-detail">Recoloring the same topology by day and marker expression aligned transcriptional progression with experimentally observed motor-neuron development.</p>
+    <a class="paper-citation" href="https://doi.org/10.1038/nbt.3854">Rizvi et al., doi:10.1038/nbt.3854 · Fig. 3 ↗</a>
+  </div>
+</div>
+```
+
+::: {.notes}
+The graph is colored first by collection day, then by selected transcripts. The main point is that experiment time and cellular state do not coincide perfectly: asynchronous cells overlap across days, while Mapper preserves the continuity and branching of the transcriptional process.
+:::
+
+## The branches carry the story {.section-slide background-color="#1a1a1a" data-breadcrumb="Mapper|Case study" data-example="FOOTBALL"}
 
 <div class="eyebrow">From theorem to exploration</div>
 
@@ -486,7 +710,7 @@ The table is generated in three dimensions and embedded by a random semi-orthogo
 This is the tonal shift. The audience now has the construction and its caveats; move quickly into the football example.
 :::
 
-## The data: each player is a performance profile
+## The data: each player is a performance profile {data-breadcrumb="Mapper|Case study|Data" data-example="FOOTBALL · 1,513 PLAYERS"}
 
 <div class="eyebrow">FBref-derived snapshot · 2020–21</div>
 
@@ -531,7 +755,7 @@ Player, team, nationality, and position are kept only for interpretation. **Mapp
 Each row is a player and each metric is standardized across this cohort. Per-90 rates reduce the effect of playing time; the 900-minute floor limits small-sample extremes. The labels are joined back only after the graph has been constructed.
 :::
 
-## Why Mapper, not another scatter?
+## Why Mapper, not another scatter? {data-breadcrumb="Mapper|Case study|Why a graph?" data-example="FOOTBALL · SAME DATA"}
 
 ::: {.columns .v-center .gap-lg}
 ::: {.column width="52%"}
@@ -547,17 +771,17 @@ Mapper retains **local continuity**, then turns changes in that continuity into 
 
 ::: {.fragment}
 
-Lum et al. used this idea for cancer survival, congressional voting, and NBA data.
+The published examples used the same visual grammar:
 
-Alagappan's Mapper analysis reframed basketball from **5 positions to 13 roles**.
+**interesting populations occupy branches, transitions, and repeated shapes, not only isolated clusters.**
 
 :::
 
-<span class="citation">Alagappan, MIT Sloan 2012 · Lum et al., Scientific Reports 2013</span>
+<span class="citation">Here, every node remains linked to the original players and every edge records shared membership.</span>
 :::
 :::
 
-## Football has a shape
+## Football has a shape {data-breadcrumb="Mapper|Case study|Baseline Mapper" data-example="FOOTBALL · SAME DATA"}
 
 ::: {.columns .v-center .gap-lg}
 ::: {.column width="36%"}
@@ -584,14 +808,32 @@ position labels shown to Mapper.
 Point to the defensive chain, midfield connection, attacking region, and then the specialist tips. Mention the 0.67 node purity versus 0.463 baseline only verbally if time allows.
 :::
 
-## One graph, many stories
+## Who does Mapper call similar? {data-breadcrumb="Mapper|Case study|Player neighbourhoods" data-example="FOOTBALL · SAME NODE"}
+
+```{=html}
+<div class="interactive-shell" data-demo="buttons">
+  <div class="control-row" role="group" aria-label="Choose which football Mapper nodes to label with example players">
+    <button class="active" data-src="figures/soccer_players_attack.png" data-caption="<strong>Attacking end · nodes 1–8:</strong> Messi + Lewandowski; Mbappé + Neymar + De Bruyne; Benzema + Salah; plus five more neighbourhoods.">Attack</button>
+    <button data-src="figures/soccer_players_midfield.png" data-caption="<strong>Middle · nodes 9–17:</strong> Kimmich + Gündoğan; Modrić + Pogba; Casemiro + De Jong; plus six more.">Middle</button>
+    <button data-src="figures/soccer_players_defense.png" data-caption="<strong>Defensive end · nodes 18–22:</strong> Kanté + Busquets + Ramos; Marquinhos + Varane + Bonucci; Thiago Silva + Rúben Dias + Koulibaly.">Defence</button>
+  </div>
+  <img class="fade-swap" data-demo-image src="figures/soccer_players_attack.png" alt="Football Mapper graph with the selected region's nodes labelled by example players who share each node">
+  <div class="demo-caption" data-demo-caption><strong>Attacking end · nodes 1–8:</strong> Messi + Lewandowski; Mbappé + Neymar + De Bruyne; Benzema + Salah; plus five more neighbourhoods.</div>
+</div>
+```
+
+::: {.notes}
+The names on one label really occur in the same Mapper node: they are close in the 18 standardized per-90 metrics and lie in the same PC1 cover slice. This is local, lens-dependent similarity, not a claim that the players are interchangeable. Because the cover overlaps, a player may appear in two adjacent nodes; those shared players are exactly what create the edges. Use the three buttons to cover all 22 nodes without turning the graph into a wall of text.
+:::
+
+## One graph, many stories {data-breadcrumb="Mapper|Case study|Interpretation" data-example="FOOTBALL · SAME GRAPH"}
 
 ```{=html}
 <div class="interactive-shell" data-demo="buttons">
   <div class="control-row" role="group" aria-label="Choose how to colour the football Mapper graph">
     <button class="active" data-src="figures/soccer_goals.png" data-caption="<strong>Goals:</strong> the attacking end lights up.">Goals</button>
     <button data-src="figures/soccer_defense.png" data-caption="<strong>Defending:</strong> almost the mirror image of goals.">Defending</button>
-    <button data-src="figures/soccer_playmaking.png" data-caption="<strong>Playmaking:</strong> mostly flat along PC₁, then it spikes on a side branch—structure the filter did not encode.">Playmaking</button>
+    <button data-src="figures/soccer_playmaking.png" data-caption="<strong>Playmaking:</strong> mostly flat along PC₁, then it spikes on a side branch, revealing structure the filter did not encode.">Playmaking</button>
     <button data-src="figures/soccer_brazil.png" data-caption="<strong>Brazil:</strong> no Brazilian cluster; named players occupy both extremes and the middle.">Brazil</button>
   </div>
   <img class="fade-swap compact" data-demo-image src="figures/soccer_goals.png" alt="Football Mapper graph coloured by the selected attribute">
@@ -603,7 +845,7 @@ Point to the defensive chain, midfield connection, attacking region, and then th
 This is the central audience-facing interaction. Recolour without changing the node positions. Pause on playmaking: its tip is off-filter structure that a PC1 scatter flattens away.
 :::
 
-## Where do the Brazilians sit?
+## Where do the Brazilians sit? {data-breadcrumb="Mapper|Case study|Interpretation" data-example="FOOTBALL · SAME GRAPH"}
 
 ::: {.columns .v-center .gap-lg}
 ::: {.column width="40%"}
@@ -620,7 +862,7 @@ There is no “Brazilian cluster.” They are distributed across the whole shape
 
 **Neymar** reaches the scorer-and-creator tip. **Casemiro** and **Fernando** sit deep among defenders. **Thiago Silva** reaches the defensive tip.
 
-Both extremes—and the middle.
+Both extremes, plus the middle.
 
 :::
 :::
@@ -632,7 +874,7 @@ Both extremes—and the middle.
 :::
 :::
 
-## Change the filter, change the question
+## Change the filter, change the question {data-breadcrumb="Mapper|Modelling choices|Filter" data-example="FOOTBALL · SAME DATA"}
 
 ```{=html}
 <div class="interactive-shell" data-demo="buttons">
@@ -652,7 +894,7 @@ Both extremes—and the middle.
 Same data. Same cover. Same clustering. The **filter** is doing the work.
 :::
 
-## The football lens learns—literally
+## The football lens learns, literally {data-breadcrumb="Mapper|Modelling choices|Filter" data-example="FOOTBALL · SAME DATA"}
 
 ::: {.filter-comparison .learned-compact}
 ::: {.filter-panel}
@@ -690,10 +932,10 @@ Point-weighted purity stays flat: **0.650 → 0.646**. More topology is not auto
 All 18 features enter the linear family; output values are standardized inside the differentiable filter so variance or parameter scale cannot win by itself. Optimization starts from PC1 and retains the best label-free topological checkpoint. Position labels are joined only afterward. The gain is real for the requested branch objective, but the held-out evaluation warns against calling any topological objective semantic truth.
 :::
 
-## The pullback still needs clustering
+## The pullback still needs clustering {data-breadcrumb="Mapper|Modelling choices|Clustering" data-example="FOOTBALL · SAME DATA"}
 
 For every cover element $U_i$, Mapper must split the pullback $f^{-1}(U_i)$ into clusters.
-Those clusters—not the intervals—become nodes.
+Those clusters, rather than the intervals, become nodes.
 
 ::: {.card-grid .four style="margin-top:.7em"}
 ::: {.card}
@@ -725,7 +967,21 @@ Those clusters—not the intervals—become nodes.
 Clustering changes the **nodes themselves**. There is no universally neutral refiner.
 :::
 
-## Same lens, different clustering
+## Same pullback, different answers {data-breadcrumb="Mapper|Modelling choices|Clustering" data-example="NOISY TWO MOONS · SAME DATA"}
+
+<div class="image-stage" style="height:560px; margin-top:.1em">
+![](figures/clustering_two_moons.png){fig-alt="Three clustering methods applied to the same noisy two-moons point cloud with a sparse bridge: k-means cuts across the moons, single linkage chains them together, and DBSCAN separates the dense curves while treating the bridge as noise"}
+</div>
+
+::: {.callout-line style="margin-top:.25em"}
+Same points. Different definitions of **“together.”** The refiner turns that definition into Mapper nodes.
+:::
+
+::: {.notes}
+This is the classical two-moons benchmark with a deliberately sparse bridge. K-means asks for two compact Voronoi cells, so its boundary cuts across the non-convex moons. Single linkage only needs a chain of sufficiently short pairwise distances; the bridge can therefore merge both moons. DBSCAN requires density-connected core points, so the sparse bridge can be rejected as noise while the two curved dense regions remain separate. The precise answer of every method still depends on its parameters; the point of the slide is the geometric bias each parameter controls.
+:::
+
+## Same lens, different clustering {data-breadcrumb="Mapper|Modelling choices|Clustering" data-example="FOOTBALL · SAME DATA"}
 
 ```{=html}
 <div class="interactive-shell" data-demo="buttons">
@@ -743,7 +999,7 @@ Clustering changes the **nodes themselves**. There is no universally neutral ref
 Same PC₁ filter. Same 20 intervals. Same overlap. The **refiner** decides whether a slice stays whole or branches.
 :::
 
-## From intervals to rectangles
+## From intervals to rectangles {data-breadcrumb="Mapper|Modelling choices|2-D filter + cover" data-example="FOOTBALL · SAME DATA"}
 
 When $f:X\to\mathbb R^2$, write $f(x)=(f_1(x),f_2(x))$ and cover the image with overlapping rectangles.
 
@@ -779,7 +1035,7 @@ $\text{path-like layering in }\mathbb R \quad\longrightarrow\quad \text{grid-lik
 This is not a 2-D graph: the graph is still the one-skeleton of the pullback nerve. It is the image of the filter, and therefore the cover, that is two-dimensional. Compared with R1, R2 adds a second resolution and overlap parameter and usually produces a denser graph.
 :::
 
-## Two lenses reveal what one cannot
+## Two lenses reveal what one cannot {data-breadcrumb="Mapper|Modelling choices|2-D filter + cover" data-example="FOOTBALL · SAME DATA"}
 
 ::: {.columns .v-center .gap-lg}
 ::: {.column width="63%"}
@@ -807,7 +1063,7 @@ A grid maps to the king graph on $\mathbb Z^2$. Triangles become possible: this 
 :::
 :::
 
-## Overlap has a phase change
+## Overlap has a phase change {data-breadcrumb="Mapper|Modelling choices|Cover overlap" data-example="FOOTBALL · SAME DATA"}
 
 ```{=html}
 <div class="interactive-shell" data-demo="range" data-frames='[
@@ -829,7 +1085,7 @@ A grid maps to the king graph on $\mathbb Z^2$. Triangles become possible: this 
 At <span class="threshold">$e>1$</span>, non-adjacent slices overlap. The loops we would measure can become artefacts of the cover.
 :::
 
-## Four ways to decide whether an edge is real
+## Four ways to decide whether an edge is real {data-breadcrumb="Mapper|Modelling choices|Nerve rule" data-example="FOOTBALL · SAME DATA"}
 
 Let $A$ and $B$ be two Mapper nodes: clusters of observations from overlapping pullbacks.
 
@@ -871,7 +1127,7 @@ Normalise by the combined size of both clusters.
 Count thresholds are scale-dependent; relative thresholds compare unequal node sizes more fairly.
 :::
 
-## The nerve is a modelling choice too
+## The nerve is a modelling choice too {data-breadcrumb="Mapper|Modelling choices|Nerve rule" data-example="FOOTBALL · SAME CLUSTERS"}
 
 ```{=html}
 <div class="interactive-shell" data-demo="buttons">
@@ -890,7 +1146,7 @@ Count thresholds are scale-dependent; relative thresholds compare unequal node s
 Same 146 clusters. Same purity. Only the definition of an **edge** changed. Once thresholded, this is no longer the ordinary nerve, so the nerve lemma does not transfer automatically.
 :::
 
-## Does the story survive resolution?
+## Does the story survive resolution? {data-breadcrumb="Mapper|Robustness check|Cover resolution" data-example="FOOTBALL · SAME DATA"}
 
 ```{=html}
 <div class="interactive-shell" data-demo="range" data-frames='[
@@ -912,7 +1168,9 @@ Same 146 clusters. Same purity. Only the definition of an **edge** changed. Once
 The **ordering of roles is stable**. The branch structure is not. Stability theory holds the cover fixed; choosing the cover remains the open problem.
 :::
 
-## Ball Mapper covers the data directly {.ball-mapper-slide}
+# Another kind of Mapper
+
+## Ball Mapper covers the data directly {.ball-mapper-slide data-breadcrumb="Mapper|Variant|Ball Mapper" data-example="TOY LOOP"}
 
 <div class="ball-mapper-explainer">
 ![](figures/ball_mapper_explainer.png){fig-alt="A Julia-generated Ball Mapper construction: a circular point cloud with seven farthest-point landmarks, epsilon balls around them, and the resulting seven-node nerve cycle"}
@@ -943,14 +1201,14 @@ An edge requires a **shared observation**, not merely intersecting geometric bal
 :::
 
 ::: {.callout-line .fragment style="margin-top:.4em"}
-No filter and no within-slice clustering—but the metric, landmarks, radius, and nerve rule still encode modelling choices.
+There is no filter and no within-slice clustering, but the metric, landmarks, radius, and nerve rule still encode modelling choices.
 :::
 
 ::: {.notes}
 The landmark balls cover observations, not the unknown ambient space. Ball Mapper is especially attractive when no meaningful scalar lens is available. Node size counts covered observations; node colour can aggregate any auxiliary variable just as in classical Mapper.
 :::
 
-## Ball Mapper: no filter, one unforgiving scale
+## Ball Mapper: no filter, one unforgiving scale {data-breadcrumb="Mapper|Variant|Ball Mapper radius" data-example="FOOTBALL · SAME DATA"}
 
 ```{=html}
 <div class="interactive-shell" data-demo="buttons">
@@ -964,10 +1222,10 @@ The landmark balls cover observations, not the unknown ambient space. Ball Mappe
 ```
 
 ::: {.callout-line style="margin-top:.35em"}
-In 18 dimensions, distances concentrate. Ball Mapper removes the filter—but its one remaining knob must carry all the weight.
+In 18 dimensions, distances concentrate. Ball Mapper removes the filter, but its one remaining knob must carry all the weight.
 :::
 
-## What the experiment taught us
+## What the experiment taught us {data-breadcrumb="Mapper|Case study|What survived?" data-example="FOOTBALL · SYNTHESIS"}
 
 ::: {.card-grid .two style="margin-top:.8em"}
 ::: {.card .tint-teal .fragment}
@@ -984,10 +1242,10 @@ Individual branches, loops, and components can change sharply with cover, overla
 :::
 
 ::: {.formula-hero .fragment}
-The picture is an argument—never the conclusion.
+The picture is an argument, never the conclusion.
 :::
 
-## Open problems · open stack
+## Open problems · open stack {data-breadcrumb="Mapper|Outlook|Open questions"}
 
 ::: {.columns .top .gap-lg}
 ::: {.column width="52%"}
@@ -996,7 +1254,7 @@ The picture is an argument—never the conclusion.
 
 - nonlinear trainable filters;
 - principled, data-driven cover selection;
-- uncertainty that includes modelling choices—not only perturbations at a fixed cover;
+- uncertainty that includes modelling choices, not only perturbations at a fixed cover;
 - loop-aware differentiable objectives at scale.
 :::
 :::
@@ -1018,7 +1276,7 @@ The picture is an argument—never the conclusion.
 :::
 :::
 
-## The arc, in one line {.section-slide background-color="#1a1a1a"}
+## Long story short {.section-slide background-color="#1a1a1a" data-breadcrumb="Mapper|Takeaway"}
 
 ::: {.closing-line}
 Reeb **fixes** the filter · Mapper **chooses** it · Differentiable Mapper **learns** it.
@@ -1026,15 +1284,29 @@ Reeb **fixes** the filter · Mapper **chooses** it · Differentiable Mapper **le
 <br>
 
 <span class="yellow">And throughout: everything is the nerve of a cover.</span>
+
+<br>
+
+<span class="yellow">And flamingos.</span>
 :::
 
-## References
+## References · origins and applications {data-breadcrumb="Mapper|References|Applications"}
 
 ::: {.small}
 - Reeb, G. (1946). *Sur les points singuliers d'une forme de Pfaff…* C. R. Acad. Sci. Paris **222**, 847–849.
-- Singh, G., Mémoli, F., Carlsson, G. (2007). *Topological Methods for the Analysis of High-Dimensional Data Sets and 3D Object Recognition.* PBG@Eurographics.
-- Alagappan, M. (2012). *From 5 to 13: Redefining the Positions in Basketball.* MIT Sloan Sports Analytics Conference.
-- Lum, P. et al. (2013). *Extracting insights from the shape of complex data using topology.* Scientific Reports **3**, 1236.
+- Singh, G., Mémoli, F., Carlsson, G. (2007). [*Topological Methods for the Analysis of High-Dimensional Data Sets and 3D Object Recognition.*](https://diglib.eg.org/items/82993db7-17e9-4d7d-b1c3-04e0c05162d2) PBG@Eurographics.
+- Yao, Y. et al. (2009). [*Topological methods for exploring low-density states in biomolecular folding pathways.*](https://doi.org/10.1063/1.3103496) J. Chem. Phys. **130**, 144115.
+- Nicolau, M., Levine, A. J., Carlsson, G. (2011). [*Topology based data analysis identifies a subgroup of breast cancers with a unique mutational profile and excellent survival.*](https://doi.org/10.1073/pnas.1102826108) PNAS **108**, 7265–7270.
+- Alagappan, M. (2012). [*From 5 to 13: Redefining the Positions in Basketball.*](https://www.sloansportsconference.com/research-papers/from-5-to-13-redefining-the-positions-in-basketball) MIT Sloan Sports Analytics Conference.
+- Lum, P. et al. (2013). [*Extracting insights from the shape of complex data using topology.*](https://doi.org/10.1038/srep01236) Scientific Reports **3**, 1236.
+- Li, L. et al. (2015). [*Identification of type 2 diabetes subgroups through topological analysis of patient similarity.*](https://doi.org/10.1126/scitranslmed.aaa9364) Sci. Transl. Med. **7**, 311ra174.
+- Nielson, J. L. et al. (2015). [*Topological data analysis for discovery in preclinical spinal cord injury and traumatic brain injury.*](https://doi.org/10.1038/ncomms9581) Nature Communications **6**, 8581.
+- Rizvi, A. H. et al. (2017). [*Single-cell topological RNA-seq analysis reveals insights into cellular differentiation and development.*](https://doi.org/10.1038/nbt.3854) Nature Biotechnology **35**, 551–560.
+:::
+
+## References · theory and variants {data-breadcrumb="Mapper|References|Theory"}
+
+::: {.small}
 - Munch, E., Wang, B. (2016). *Convergence between categorical representations of Reeb space and Mapper.* SoCG.
 - Dey, T., Mémoli, F., Wang, Y. (2016). *Multiscale Mapper.* SODA.
 - Carrière, M., Oudot, S. (2018). *Structure and Stability of the One-Dimensional Mapper.* FoCM **18**, 1333–1396.
@@ -1043,7 +1315,7 @@ Reeb **fixes** the filter · Mapper **chooses** it · Differentiable Mapper **le
 - Dłotko, P. (2019). *Ball mapper: a shape summary for topological data analysis.* arXiv:1901.07410.
 :::
 
-## Obrigado! {.section-slide background-color="#1a1a1a"}
+## Obrigado! {.section-slide background-color="#1a1a1a" data-breadcrumb="Mapper|End"}
 
 ::: {.closing-line}
 **Guilherme Vituri**

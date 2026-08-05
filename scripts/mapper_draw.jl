@@ -4,7 +4,7 @@
 # show. Two things it does not expose are needed here:
 #
 #   * an *ordered* categorical palette. Its string branch groups labels with
-#     `sort`, so Defender / Forward / Midfielder comes out alphabetical — which
+#     `sort`, so Defender / Forward / Midfielder comes out alphabetical: which
 #     scrambles the one axis the football graph is about.
 #   * per-node text, so famous players can be named on the graph.
 #
@@ -27,7 +27,7 @@ const POS_COLORS = Makie.to_color.(["#1f4e79", "#79b04a", "#c0392b"])
 Index into `POSITIONS` of the most common position in each node.
 
 `node_colors`' default mode function joins ties with `/`, which invents
-categories — `position_group` has exactly three values, so a legend entry like
+categories: `position_group` has exactly three values, so a legend entry like
 "Defender/Midfielder" is an artefact of tie-joining and not a role. Here ties are
 broken toward the more defensive role and counted, so the count can be reported
 instead of hidden.
@@ -130,6 +130,8 @@ const SHORT_NAME = Dict(
     "Cristiano Ronaldo" => "Ronaldo", "Kylian Mbappé" => "Mbappé",
     "Kevin De Bruyne" => "De Bruyne", "Karim Benzema" => "Benzema",
     "Erling Haaland" => "Haaland", "Luis Muriel" => "Muriel",
+    "Son Heung-min" => "Son", "James Rodríguez" => "James",
+    "Bruno Guimarães" => "Bruno G.", "Rúben Dias" => "Rúben Dias",
     "Trent Alexander-Arnold" => "Alexander-Arnold", "N'Golo Kanté" => "Kanté",
     "Neymar" => "Neymar", "Casemiro" => "Casemiro", "Marcelo" => "Marcelo",
     "Thiago Silva" => "Thiago Silva", "Rodrygo" => "Rodrygo",
@@ -143,7 +145,7 @@ short_name(n) = get(SHORT_NAME, n, String(last(split(n))))
 Choose one node per requested player and return the text to draw there.
 
 A player belongs to *every* cover element containing them, so a name can have
-several candidate nodes — that multiplicity is exactly what puts an edge between
+several candidate nodes: that multiplicity is exactly what puts an edge between
 those nodes. We label the **smallest** node containing the player: the most
 specific cluster they fall in, which is the most informative one to name. Players
 landing on the same node share a label, which is itself worth seeing.
@@ -174,7 +176,7 @@ end
 # Push each label away from the node's own neighbours, so on a tip it lands just
 # past the end of the flare rather than back along it. Isolated nodes have no
 # neighbours to push off, so they fall back to the graph's centre.
-function _place_labels!(ax, positions, labels, extent, g)
+function _place_labels!(ax, positions, labels, extent, g, directions, fontsize)
     isempty(labels) && return
     ctr = sum(positions) / length(positions)
     pad = 0.06 * extent
@@ -182,7 +184,7 @@ function _place_labels!(ax, positions, labels, extent, g)
         p = positions[k]
         nb = neighbors(g, k)
         ref = isempty(nb) ? ctr : sum(positions[nb]) / length(nb)
-        v = p - ref
+        v = get(directions, k, p - ref)
         r = hypot(v[1], v[2])
         dir = r < 1e-9 ? Point2f(0, 1) : Point2f(v[1] / r, v[2] / r)
         anchor = p + dir * pad
@@ -192,7 +194,7 @@ function _place_labels!(ax, positions, labels, extent, g)
         align = (dir[1] >= 0 ? :left : :right, dir[2] >= 0 ? :bottom : :top)
         # A thin white outline keeps a name legible where it crosses an edge; any
         # thicker and it eats the glyph strokes at this font size.
-        text!(ax, anchor; text = txt, fontsize = 12, align = align,
+        text!(ax, anchor; text = txt, fontsize = fontsize, align = align,
             color = :gray10, font = :bold,
             strokewidth = 0.8, strokecolor = (:white, 0.85))
     end
@@ -212,6 +214,8 @@ function graph_plot(M;
     node_values = nothing,
     colormap = :viridis,
     labels = Dict{Int,String}(),
+    label_directions = Dict{Int,Point2f}(),
+    label_fontsize = 12,
     edge_width = 1.0,
     edge_alpha = 0.5,
     figsize = (820, 560),
@@ -252,15 +256,15 @@ function graph_plot(M;
             width = 12, ticklabelsize = 11)
     end
 
-    _place_labels!(ax, pts, labels, extent, M.g)
+    _place_labels!(ax, pts, labels, extent, M.g, label_directions, label_fontsize)
 
     hidedecorations!(ax)
     hidespines!(ax)
-    # `hidedecorations!` does not stop glyphs clipping at the frame, so make room —
+    # `hidedecorations!` does not stop glyphs clipping at the frame, so make room , 
     # horizontally in proportion to the longest label, since labels are anchored
     # at a node and run outward from there.
     widest = isempty(labels) ? 0 : maximum(length, values(labels))
-    mx = isempty(labels) ? 0.06 : clamp(0.017 * widest, 0.16, 0.45)
+    mx = isempty(labels) ? 0.06 : clamp(0.017 * widest * label_fontsize / 12, 0.16, 0.8)
     my = isempty(labels) ? 0.06 : 0.12
     xlims!(ax, minimum(xs) - mx * extent, maximum(xs) + mx * extent)
     ylims!(ax, minimum(ys) - my * extent, maximum(ys) + my * extent)

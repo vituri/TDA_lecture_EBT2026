@@ -1,5 +1,5 @@
 # Find a torus Mapper that is a clean cycle: every node degree 2, one component,
-# one independent loop — so the figure matches the Reeb-graph claim exactly.
+# one independent loop: so the figure matches the Reeb-graph claim exactly.
 
 using Random, Statistics
 using CSV, DataFrames, MetricSpaces, Graphs

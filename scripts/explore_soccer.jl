@@ -90,7 +90,7 @@ end
 
 # ── 4. overlap past expansion = 1 breaks the layering ─────────────────────────
 # radius = (step/2)(1+e); slices i and i+2 are 2*step apart, so they meet iff e > 1.
-println("\n══ expansion sweep (pc1, 14 slices, DBscan(2.5,3)) — layering breaks at e>1 ══")
+println("\n══ expansion sweep (pc1, 14 slices, DBscan(2.5,3)): layering breaks at e>1 ══")
 for exp in (0.2, 0.4, 0.8, 1.0, 1.4, 2.0)
     M = classical_mapper(space, R1Cover(pc1, Uniform(length = 14, expansion = exp)),
         DBscan(radius = 2.5, min_cluster_size = 3))

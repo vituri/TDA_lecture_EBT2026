@@ -150,6 +150,43 @@
     update();
   }
 
+  function setupBreadcrumbs() {
+    $$(".reveal .slides section[data-breadcrumb]").forEach((slide) => {
+      const labels = (slide.dataset.breadcrumb || "")
+        .split("|")
+        .map((label) => label.trim())
+        .filter(Boolean);
+
+      if (!labels.length) return;
+
+      const context = document.createElement("nav");
+      context.className = "slide-context";
+      context.setAttribute("aria-label", "Slide context");
+
+      const trail = document.createElement("div");
+      trail.className = "slide-context-trail";
+
+      labels.forEach((label, index) => {
+        const crumb = document.createElement("span");
+        crumb.className = "slide-context-crumb";
+        crumb.textContent = label;
+        if (index === labels.length - 1) crumb.setAttribute("aria-current", "page");
+        trail.append(crumb);
+      });
+
+      context.append(trail);
+
+      if (slide.dataset.example) {
+        const example = document.createElement("span");
+        example.className = "slide-context-example";
+        example.textContent = slide.dataset.example;
+        context.append(example);
+      }
+
+      slide.prepend(context);
+    });
+  }
+
   function setupKeyboardShortcuts() {
     document.addEventListener("keydown", (event) => {
       const slide = $(".reveal .slides section.present");
@@ -167,6 +204,7 @@
   }
 
   function init() {
+    setupBreadcrumbs();
     setupButtonDemos();
     setupRangeDemos();
     setupTorus();
