@@ -1,4 +1,4 @@
-# Drawing helpers for the football figures.
+# Drawing helpers for the presentation figures.
 #
 # TDAplots' `mapper_plot` handles the simple cases and is what the code slides
 # show. Two things it does not expose are needed here:
@@ -121,6 +121,79 @@ function layout_packed(M; seed = 20260724, pad = 0.8, exponent = 0.68, aspect = 
         row_h = max(row_h, bh)
     end
     return out
+end
+
+"""
+    layout_torus_reeb(M, node_values; loop_width = 0.32) -> Vector{Point2f}
+
+Lay out a one-cycle Mapper graph as the classical Reeb graph of a torus: two
+vertical tails joined by a symmetric loop.
+
+The vertical coordinate is the filter value, so the drawing still communicates
+the Mapper filtration. Leaf-pruning identifies the unique cycle, then its two
+paths are bowed to opposite sides. This changes only the drawing; the graph and
+its data-derived nodes and edges are untouched.
+"""
+function layout_torus_reeb(M, node_values; loop_width = 0.32)
+    g = M.g
+    n = nv(g)
+    length(node_values) == n ||
+        throw(DimensionMismatch("expected one filter value for each of the $n Mapper nodes"))
+
+    # Repeatedly remove leaves. For a connected, one-cycle graph, precisely the
+    # vertices on that cycle remain.
+    on_cycle = trues(n)
+    remaining_degree = degree(g)
+    queue = findall(<=(1), remaining_degree)
+    head = 1
+    while head <= length(queue)
+        v = queue[head]
+        head += 1
+        on_cycle[v] || continue
+        on_cycle[v] = false
+        for u in neighbors(g, v)
+            on_cycle[u] || continue
+            remaining_degree[u] -= 1
+            remaining_degree[u] == 1 && push!(queue, u)
+        end
+    end
+
+    cycle = findall(on_cycle)
+    length(cycle) >= 3 || error("the torus layout requires a graph with one cycle")
+    lo = cycle[argmin(node_values[cycle])]
+    hi = cycle[argmax(node_values[cycle])]
+    lo == hi && error("the cycle endpoints need distinct filter values")
+
+    # Walking from the lower junction through each of its two cycle neighbours
+    # gives the left and right sides of the loop.
+    starts = sort(filter(u -> on_cycle[u], neighbors(g, lo)))
+    length(starts) == 2 || error("expected two cycle paths at the lower junction")
+    function cycle_path(start)
+        path = [lo]
+        previous, current = lo, start
+        while current != hi
+            push!(path, current)
+            next = filter(u -> on_cycle[u] && u != previous, neighbors(g, current))
+            length(next) == 1 || error("expected a simple cycle between the two junctions")
+            previous, current = current, only(next)
+            length(path) <= length(cycle) || error("could not traverse the Mapper cycle")
+        end
+        push!(path, hi)
+        return path
+    end
+
+    paths = cycle_path.(starts)
+    y = rescale(node_values; min = -1, max = 1)
+    x = zeros(Float64, n)
+    ylo, yhi = y[lo], y[hi]
+    for (side, path) in zip((-1, 1), paths)
+        for v in path[2:(end - 1)]
+            t = clamp((y[v] - ylo) / (yhi - ylo), 0, 1)
+            x[v] = side * loop_width * sinpi(t)^0.72
+        end
+    end
+
+    return Point2f.(x, y)
 end
 
 # Surnames keep the labels short enough to sit beside a node without colliding.

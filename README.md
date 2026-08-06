@@ -50,11 +50,10 @@ topological objective. A controlled example shows a learned direction recovering
 the four legs of a table when principal component analysis sees only its broad
 surface.
 
-A historical gallery uses original figures from eight landmark applications:
-RNA folding pathways, two breast-cancer studies, congressional voting, NBA
-playing roles, type-2 diabetes stratification, neurotrauma outcomes, and
-single-cell differentiation. Each slide states the question, the published
-finding, and a direct link to the source paper.
+A historical gallery uses original figures from six landmark applications:
+two breast-cancer studies, NBA playing roles, type-2 diabetes stratification,
+neurotrauma outcomes, and single-cell differentiation. Each slide states the
+question, the published finding, and a direct link to the source paper.
 
 ## The main case study: the shape of football
 

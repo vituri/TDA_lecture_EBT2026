@@ -289,11 +289,16 @@ function make_filter_figures()
     torus_mapper = classical_mapper(torus_space,
         R1Cover(torus_values, Uniform(length = 8, expansion = 0.3)),
         DBscan(radius = 0.8, min_cluster_size = 5))
+    torus_node_values = node_colors(torus_mapper, torus_values)
     torus_figure = mapper_plot(torus_mapper;
-        # MDS on the Mapper-node centroids preserves the torus geometry: the
-        # loop opens symmetrically and the two tails share its horizontal axis.
-        node_positions = layout_mds(torus_mapper),
-        node_values = node_colors(torus_mapper, torus_values))
+        node_positions = layout_torus_reeb(torus_mapper, torus_node_values),
+        node_size = node_sizes(torus_mapper; area_max = 28),
+        node_values = torus_node_values,
+        edge_size = 1.5)
+    # Keep the loop narrow and centered, like the standard torus Reeb-graph
+    # schematic, instead of stretching it across the full rectangular panel.
+    torus_axis = only(filter(x -> x isa Axis, torus_figure.content))
+    limits!(torus_axis, -1.05, 1.05, -1.12, 1.12)
     save(joinpath(FILTER_FIGDIR, "torus_mapper.png"), torus_figure; px_per_unit = 2)
     println("wrote torus_mapper.png")
 

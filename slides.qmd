@@ -10,19 +10,6 @@ title-slide-attributes:
   class: "full-bleed-title"
 ---
 
-## What is the Mapper? {.section-slide background-color="#1a1a1a" data-breadcrumb="Mapper|Foundations"}
-
-::: {.thesis}
-Mapper is what is left of the **Reeb graph** once we make it computable:
-
-swap *connected components of fibres* for **cover + clustering**.
-
-<span class="yellow">The nerve turns the result into a faithful shadow of the data.</span>
-:::
-
-::: {.notes}
-This is the thesis. Everything that follows should make one part of this sentence inevitable.
-:::
 
 ## The Reeb graph alive {data-breadcrumb="Mapper|Continuous model|Reeb graph" data-example="TORUS · CONTINUOUS"}
 
@@ -188,7 +175,7 @@ Trace the same data from left to right. Emphasize that the white overlap points 
 | connected components | ⟶ | clusters: DBSCAN, linkage, … |
 
 ::: {.formula-hero .fragment}
-filter $f$ &nbsp; + &nbsp; cover $\mathcal U$ &nbsp; + &nbsp; clustering rule
+filter $f$ &nbsp; + &nbsp; cover $\mathcal U$ &nbsp; + &nbsp; clustering rule + nerve construction
 :::
 
 ## The hinge: the nerve lemma {data-breadcrumb="Mapper|Construction|Nerve"}
@@ -486,7 +473,7 @@ The table is generated in three dimensions and embedded by a random semi-orthogo
 
 ## Mapper in the wild {.section-slide background-color="#1a1a1a" data-breadcrumb="Mapper|Landmark applications"}
 
-<div class="eyebrow">Eight published case studies · 2009–2017</div>
+<div class="eyebrow">Six published case studies · 2011–2017</div>
 
 ::: {.thesis}
 The famous Mapper pictures did more than compress data.
@@ -495,36 +482,11 @@ They turned **branches, paths, and repeated shapes** into scientific hypotheses.
 :::
 
 <div class="application-years" aria-label="Years represented in the following case studies">
-  <span>2009</span><span>2011</span><span>2013</span><span>2015</span><span>2017</span>
+  <span>2011</span><span>2013</span><span>2015</span><span>2017</span>
 </div>
 
 ::: {.notes}
 This is a deliberately historical sequence. Each next slide uses an original figure from the cited paper and isolates the scientific claim that made the example memorable.
-:::
-
-## One RNA hairpin, two routes home {data-breadcrumb="Mapper|Landmark applications|Molecular dynamics" data-example="RNA FOLDING · 2009"}
-
-```{=html}
-<div class="application-layout balanced">
-  <figure class="paper-figure">
-    <img src="figures/applications/yao-2009-fig3.png" alt="Mapper graphs and representative contact maps for RNA hairpin unfolding and folding; unfolding follows one main path while folding branches into two paths." />
-    <figcaption>Original Fig. 3 · unfolding above, folding below</figcaption>
-  </figure>
-  <div class="paper-copy">
-    <div class="paper-meta">Yao et al. · Journal of Chemical Physics · 2009</div>
-    <p class="paper-question">Can rare intermediate conformations survive the compression of a molecular simulation?</p>
-    <div class="paper-finding">
-      <span>The finding</span>
-      <p><strong>Unfolding followed one dominant path; folding followed two.</strong> The two branches passed through different base-pair intermediates.</p>
-    </div>
-    <p class="paper-detail">A conditional-density filter brought low-population states forward instead of letting the dense folded and unfolded states absorb them.</p>
-    <a class="paper-citation" href="https://doi.org/10.1063/1.3103496">Yao et al., doi:10.1063/1.3103496 · Fig. 3 ↗</a>
-  </div>
-</div>
-```
-
-::: {.notes}
-Read the colored nodes from red, high density, to blue, low density. The bottom Mapper graph branches at the intermediate states: one route forms the closing base pair first, the other the end base pair. The authors also identified a small reptation branch. This was an early demonstration that Mapper could expose rare transition structure in a highly heterogeneous simulation.
 :::
 
 ## A branch became a breast-cancer subgroup {data-breadcrumb="Mapper|Landmark applications|Cancer genomics" data-example="BREAST CANCER · 2011"}
@@ -575,31 +537,6 @@ The filter measures deviation from a healthy-state model: blue is close to norma
 
 ::: {.notes}
 Panels A and B use the NKI cohort; C and D use GSE2034. The top components are death or relapse and the lower Y-shaped components are survival or no relapse. The network used outcome as one filter, so describe this as supervised stratification and cross-cohort correspondence, not as an outcome-blind discovery.
-:::
-
-## Voting records acquired a political geometry {data-breadcrumb="Mapper|Landmark applications|Politics" data-example="U.S. HOUSE · 1990–2011"}
-
-```{=html}
-<div class="application-layout landscape">
-  <figure class="paper-figure">
-    <img src="figures/applications/lum-2013-fig4.jpg" alt="House fragmentation index from 1990 to 2011 above Mapper networks of representatives in 2009, 2010, and 2011 colored red for Republicans and blue for Democrats." />
-    <figcaption>Original Fig. 4 · annual fragmentation and three House networks</figcaption>
-  </figure>
-  <div class="paper-copy">
-    <div class="paper-meta">Lum et al. · Scientific Reports · 2013</div>
-    <p class="paper-question">What changes when representatives are compared by every vote rather than by party label?</p>
-    <div class="paper-finding">
-      <span>The finding</span>
-      <p>The maps exposed changing <strong>within-party fragmentation</strong>, with especially high fragmentation in 2008 and 2010.</p>
-    </div>
-    <p class="paper-detail">A persistent cross-party “Central Group” contained members whose voting behavior connected otherwise separated partisan regions.</p>
-    <a class="paper-citation" href="https://doi.org/10.1038/srep01236">Lum et al., doi:10.1038/srep01236 · Fig. 4 ↗</a>
-  </div>
-</div>
-```
-
-::: {.notes}
-The line chart counts connected components, excluding singletons, for each party and year. The three lower panels show the actual topology for 2009–2011. PCA recovered the obvious party split but did not expose the same fragmentation. Avoid implying causality from contemporary events; the paper offers them as possible interpretations.
 :::
 
 ## Five basketball positions became thirteen roles {data-breadcrumb="Mapper|Landmark applications|Sports analytics" data-example="NBA · 2010–11"}
@@ -843,35 +780,6 @@ The names on one label really occur in the same Mapper node: they are close in t
 
 ::: {.notes}
 This is the central audience-facing interaction. Recolour without changing the node positions. Pause on playmaking: its tip is off-filter structure that a PC1 scatter flattens away.
-:::
-
-## Where do the Brazilians sit? {data-breadcrumb="Mapper|Case study|Interpretation" data-example="FOOTBALL · SAME GRAPH"}
-
-::: {.columns .v-center .gap-lg}
-::: {.column width="40%"}
-<span class="big-number">72 / 1,513</span>
-Brazilian players: a 4.8% base rate.
-
-::: {.fragment}
-
-There is no “Brazilian cluster.” They are distributed across the whole shape.
-
-:::
-
-::: {.fragment}
-
-**Neymar** reaches the scorer-and-creator tip. **Casemiro** and **Fernando** sit deep among defenders. **Thiago Silva** reaches the defensive tip.
-
-Both extremes, plus the middle.
-
-:::
-:::
-
-::: {.column width="60%"}
-<div class="image-stage tall">
-![](figures/soccer_brazil.png){fig-alt="Football Mapper graph coloured by fraction of Brazilian players, with selected names"}
-</div>
-:::
 :::
 
 ## Change the filter, change the question {data-breadcrumb="Mapper|Modelling choices|Filter" data-example="FOOTBALL · SAME DATA"}

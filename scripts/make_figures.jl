@@ -47,9 +47,15 @@ f_torus = [x[1] for x in X_torus]
 C_torus = R1Cover(f_torus, Uniform(length = 8, expansion = 0.3))
 M_torus = classical_mapper(X_torus, C_torus, DBscan(radius = 0.8, min_cluster_size = 5))
 
-save_fig("torus_mapper.png", mapper_plot(M_torus,
-    node_positions = layout_sfdp(M_torus),
-    node_values = node_colors(M_torus, f_torus)))
+torus_node_values = node_colors(M_torus, f_torus)
+torus_figure = mapper_plot(M_torus;
+    node_positions = layout_torus_reeb(M_torus, torus_node_values),
+    node_size = node_sizes(M_torus; area_max = 28),
+    node_values = torus_node_values,
+    edge_size = 1.5)
+torus_axis = only(filter(x -> x isa Axis, torus_figure.content))
+limits!(torus_axis, -1.05, 1.05, -1.12, 1.12)
+save_fig("torus_mapper.png", torus_figure)
 
 let g = M_torus.g, d = degree(g)
     println("torus: nodes=$(nv(g)) edges=$(ne(g)) components=$(length(connected_components(g))) " *
