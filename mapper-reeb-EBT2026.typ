@@ -833,7 +833,7 @@ The cover and the clustering are *choices*. Change the resolution:
   ],
   card(fill: rgb("#eaf4f3"))[
     #text(fill: vteal, weight: "bold")[JuliaTDA]
-    `TDAmapper.jl` · `MetricSpaces.jl` · `Ripserer.jl` · `PersistenceInference.jl`
+    `TDAmapper.jl` · `MetricSpaces.jl` · `TDARipserer.jl` · `PersistenceInference.jl`
     #v(0.3em)
     Fast, composable, native autodiff. #h(0.2em) #accent[github.com/JuliaTDA]
   ],

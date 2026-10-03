@@ -1174,7 +1174,7 @@ The picture is an argument, never the conclusion.
 `TDAmapper.jl`  
 `MetricSpaces.jl`  
 `TDAplots.jl`  
-`Ripserer.jl`  
+`TDARipserer.jl`\
 `PersistenceInference.jl`
 
 **Fast · composable · native autodiff**
